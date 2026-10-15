@@ -1,0 +1,1767 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>EEG Research Atlas · 脑电科研知识图谱</title>
+  <style>
+:root{--navy:#0c2130;--navy2:#123346;--nav-border:#244254;--ink:#172d3c;--muted:#748693;--bg:#f5f8fa;--white:#fff;--line:#e1e8ed;--blue:#1d778a;--teal:#159a91;--purple:#8c6ab6;--amber:#dba552;--red:#cc7c79;--shadow:0 14px 38px rgba(24,63,82,.09);font-family:Inter,"SF Pro Display","PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;color:var(--ink);background:var(--bg)}button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:#18768a;text-decoration:none}a:hover{text-decoration:underline}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #43b4b1;outline-offset:2px}
+.shell{min-height:100vh;display:grid;grid-template-columns:252px minmax(0,1fr) 0;transition:grid-template-columns .25s ease}.shell:has(.detail-panel.open){grid-template-columns:252px minmax(0,1fr) 345px}
+.sidebar{background:linear-gradient(180deg,#102a3b 0%,#0c2232 100%);color:#e7eff3;min-height:100vh;position:sticky;top:0;height:100vh;padding:24px 15px 18px;display:flex;flex-direction:column;overflow:auto;z-index:10}.identity{display:flex;align-items:center;gap:11px;padding:4px 10px 29px}.identity-mark{height:43px;width:43px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#50c4c6,#197487);font-size:24px;font-family:Georgia,serif;font-weight:900;color:#fff;box-shadow:0 7px 18px #073947}.identity-mark span{color:#d2faf3}.identity strong{display:block;font-size:14px;white-space:nowrap;letter-spacing:.1px}.identity small{display:block;color:#91b4c2;font-size:11px;margin-top:5px}.sidebar-section-label{font-size:10px;letter-spacing:1.75px;font-weight:700;color:#6e95a4;margin:2px 14px 12px}.sidebar-section-label.space-top{margin-top:27px}.navigation{display:flex;flex-direction:column;gap:5px}.nav-btn{width:100%;display:flex;align-items:center;gap:11px;border:1px solid transparent;background:transparent;text-align:left;color:#b4cfda;border-radius:9px;padding:11px 12px;font-size:13px;font-weight:550}.nav-btn.active{background:#224459;border-color:#376275;color:white;box-shadow:inset 3px 0 #57cbc2}.nav-btn:not(.active):hover{background:#1b3c4e;color:#fff}.navico{font-size:20px;color:#79aaaf;min-width:25px;text-align:center;line-height:16px}.nav-btn.active .navico{color:#6ee2d9}.navtail{margin-left:auto;color:#86a4b3;font-size:10px}.nav-btn em{font-size:11px;margin-left:auto;background:#32556c;color:#dcecf0;font-style:normal;border-radius:30px;padding:2px 7px}.sidebar-divider{height:1px;background:#234153;margin:26px 12px 20px}.type-filters{display:flex;flex-direction:column;gap:5px;padding:0 6px}.filter-row{border:0;background:transparent;color:#adcad4;display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:8px;font-size:12px;text-align:left}.filter-row:hover{background:#244455}.filter-row.off{opacity:.33}.filter-dot{height:9px;width:9px;border-radius:50%;flex-shrink:0}.filter-count{margin-left:auto;color:#789eae}.sidebar-footer{margin-top:auto;padding:17px 11px 0;border-top:1px solid #254657}.indicator{color:#bad4db;font-size:11px}.pulse-dot{display:inline-block;height:7px;width:7px;border-radius:50%;background:#5acfad;margin-right:6px;box-shadow:0 0 0 3px #27766b55}.subtext{font-size:10.8px;color:#789baa;margin-top:10px;line-height:1.7}.footer-actions{display:flex;gap:12px;margin-top:16px}.link-btn{background:transparent;border:0;padding:0;color:#b2d5df;font-size:11px}.link-btn:hover{color:#fff}
+.main{min-width:0;display:flex;flex-direction:column;min-height:100vh}.topbar{min-height:74px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:14px 28px;gap:12px}.breadcrumb{font-size:11px;letter-spacing:.8px;font-weight:700;color:#9babb5}.breadcrumb span{color:#c5d1d7;padding:0 9px}.breadcrumb strong{font-size:12px;color:#547080;letter-spacing:0}.top-actions{display:flex;align-items:center;gap:9px}.search-wrap{height:37px;border:1px solid var(--line);background:#f8fafb;display:flex;align-items:center;gap:9px;padding:0 11px;border-radius:8px;width:280px}.search-wrap span{font-size:20px;color:#7894a3}.search-wrap input{border:0;outline:0;background:none;min-width:0;width:100%;font-size:12px}.search-wrap kbd{font-size:11px;color:#a4b1bb;border:1px solid #dfe7eb;border-radius:3px;padding:0px 5px}.btn{border:1px solid transparent;border-radius:8px;padding:9px 13px;font-size:12px;font-weight:700;min-height:36px;white-space:nowrap}.btn.primary{background:#16798a;color:#fff;box-shadow:0 4px 10px #16798a22}.btn.primary:hover{background:#0e6577}.btn.secondary{background:#eef5f6;border-color:#d7e8e9;color:#356b76}.btn.secondary:hover{background:#e0f0ef}.btn.ghost{background:transparent;border-color:var(--line);color:#57707e}.btn.danger{background:#fff0ee;border-color:#f5d5d1;color:#a95151}.btn.wide{width:100%;margin-top:11px}.workspace-heading{padding:24px 28px 20px;display:flex;align-items:flex-end;justify-content:space-between;gap:15px}.eyebrow,.section-kicker,.mini-label{letter-spacing:1.6px;font-size:10px;font-weight:850;color:#1c9a96}.workspace-heading h1{font-weight:760;letter-spacing:-.7px;font-size:24px;margin:8px 0 7px}.workspace-heading p{font-size:12px;color:#7d919e;margin:0}.heading-stats{display:flex;gap:16px}.stat{border-left:1px solid #dbe5e9;padding-left:16px}.stat b{display:block;font-size:19px;color:#1c5d70}.stat small{display:block;color:#90a2ac;font-size:10px;margin-top:2px}
+.view{display:none;padding:0 28px 34px;min-width:0;flex:1}.view.active{display:block}.graph-view.active{display:flex;flex-direction:column;padding-bottom:20px}.view-toolbar{height:47px;border:1px solid var(--line);border-bottom:0;background:#fff;border-radius:13px 13px 0 0;display:flex;justify-content:space-between;align-items:center;padding:0 14px;gap:12px}.tool-left,.tool-right{display:flex;align-items:center;gap:5px}.caption{font-size:12px;font-weight:750;color:#3f6472;margin-right:10px}.pill{font-size:11px;border:1px solid transparent;background:transparent;border-radius:100px;padding:7px 11px;color:#6c8795;white-space:nowrap}.pill:hover{background:#eef7f7}.pill.selected{background:#e1f4f2;border-color:#b9e0dd;color:#087d77;font-weight:750}.icon-text{border:0;background:transparent;color:#69818e;font-size:11px;padding:8px}.icon-text:hover{color:#145f6c}.graph-stage{background:#fbfdfe;position:relative;flex:1;min-height:560px;border-radius:0 0 13px 13px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}.graph-stage::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(#a3c0ca45 .85px,transparent .85px);background-size:23px 23px;opacity:.4}#network{position:absolute;inset:0;z-index:1}.graph-corner{position:absolute;left:22px;top:20px;z-index:2;background:#ffffffeb;box-shadow:0 8px 25px #193b4d0d;border:1px solid #e6edef;border-radius:10px;padding:13px 16px;pointer-events:none}.graph-corner strong{display:block;margin-top:9px;font-family:Georgia,serif;font-size:18px;color:#244658}.graph-corner small{display:block;margin-top:4px;font-size:11px;color:#8297a2}.live-sign{font-size:9px;color:#1c9a95;font-weight:850;letter-spacing:1.3px}.graph-legend{position:absolute;z-index:2;right:16px;bottom:34px;background:#ffffffed;border:1px solid #e3ecf0;border-radius:10px;padding:11px 13px;box-shadow:0 9px 25px #2445550a;display:grid;grid-template-columns:repeat(2,auto);gap:9px 16px}.legend-row{font-size:10px;color:#5d7480;display:flex;gap:7px;align-items:center}.graph-bottom-note{position:absolute;z-index:2;bottom:15px;left:20px;color:#94a6af;font-size:10px}.network-fallback{position:absolute;inset:75px 25px 80px;z-index:3;overflow:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));align-content:start;gap:10px}.network-fallback[hidden]{display:none}.fallback-item{padding:13px;text-align:left;border:1px solid #dce8ed;border-radius:10px;background:#fff}.fallback-item strong{display:block}.fallback-item span{font-size:10px;color:#86939b}
+.detail-panel{background:#fff;border-left:1px solid var(--line);min-width:0;max-height:100vh;height:100vh;position:sticky;top:0;overflow:auto;visibility:hidden;opacity:0;transition:opacity .15s;z-index:9}.detail-panel.open{visibility:visible;opacity:1}.detail-empty{padding:70px 30px;text-align:center;color:#718999}.detail-empty span{font-size:45px;color:#4fb6b0}.detail-inner{padding:25px 23px}.detail-top{display:flex;justify-content:space-between;align-items:center}.detail-top .mini-label{color:#3da49f}.close-detail{border:0;background:#eef4f5;border-radius:6px;width:27px;height:27px;color:#64818b;font-size:18px}.detail-inner h2{font-size:24px;letter-spacing:-.5px;margin:19px 0 5px}.detail-sub{font-size:11px;color:#7a939e;margin-bottom:17px;line-height:1.5}.detail-status{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px}.tag{background:#eef6f7;border:1px solid #e0edef;color:#356b79;border-radius:5px;padding:5px 7px;font-size:10px}.tag.orange{background:#fff4e9;color:#a77b3b;border-color:#f4e4d2}.tag.purple{background:#f5f0f9;color:#8861a9;border-color:#e9def1}.detail-divider{border:0;border-top:1px solid #e8eef2;margin:19px 0}.detail-heading{color:#889ba6;font-size:10px;font-weight:750;letter-spacing:1px;text-transform:uppercase;margin-bottom:9px}.detail-body{color:#3a5261;font-size:12px;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere}.detail-evidence{padding-left:17px;color:#3a5261;font-size:11px;line-height:1.9}.detail-related{display:flex;flex-direction:column;gap:5px}.relation-btn{background:#f5f9fa;border:1px solid #e9f0f3;border-radius:7px;padding:8px 9px;text-align:left;font-size:11px;color:#506b7b}.relation-btn b{display:block;color:#207588;margin-bottom:3px}.detail-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px}.small-action{font-size:11px;background:#eef4f5;color:#2b6775;border:1px solid #dcebef;border-radius:7px;padding:8px 10px}.small-action.danger{color:#a7534c;background:#fff6f5;border-color:#f7e7e3}.source-link{word-break:break-word;font-size:11px}
+.section-intro{border:1px solid var(--line);background:#fff;border-radius:13px;padding:22px 25px;margin-bottom:17px}.section-intro h2{font-size:21px;margin:7px 0}.section-intro p{font-size:12px;color:#77909d;margin:0;line-height:1.7}.roadmap-board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.stage{background:white;border:1px solid #dce7eb;border-radius:13px;min-width:0;overflow:hidden;box-shadow:var(--shadow)}.stage-header{padding:19px 17px 15px;background:linear-gradient(120deg,#eff9f9,#f7fafc);border-bottom:1px solid #e2eff0}.stage-number{display:inline-flex;align-items:center;justify-content:center;height:27px;width:27px;background:#d5e9ea;color:#267b87;border-radius:8px;font-size:12px;font-weight:850}.stage-header h3{font-family:Georgia,serif;font-size:17px;margin:13px 0 4px;color:#1d4b5d}.stage-header p{font-size:11px;color:#6c8794;margin:0;line-height:1.5}.stage-list{display:flex;flex-direction:column;gap:8px;padding:12px}.road-card{border:1px solid #e3ecef;border-radius:8px;background:#fcfefe;padding:11px 12px;text-align:left;position:relative}.road-card:hover{border-color:#a6dad7;background:#f6fcfb}.road-card strong{display:block;font-size:12px}.road-card small{display:block;font-size:10px;color:#8d9fa9;margin-top:6px;line-height:1.45}.road-card em{font-size:9px;font-style:normal;color:#6294a3;position:absolute;right:11px;top:11px}.question-banner{margin-top:16px;background:#123e4c;color:#fff;border-radius:13px;padding:17px 23px}.question-banner span{font-size:10px;letter-spacing:1.2px;color:#6de3d1}.question-banner strong{display:block;margin-top:7px;font-size:17px}.question-banner p{font-size:11px;color:#b3d0d6;margin:7px 0 0}
+.matrix-help{display:flex;align-items:center;gap:20px;font-size:11px;color:#8396a0;margin:0 0 12px 3px}.matrix-tip{margin-left:auto}.matrix-scroller{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff;padding:12px}.matrix{display:grid;grid-template-columns:145px repeat(6,minmax(133px,1fr));min-width:1000px}.matrix-head,.matrix-side,.matrix-cell{border-right:1px solid #edf1f3;border-bottom:1px solid #edf1f3;padding:10px}.matrix-head{font-weight:750;font-size:12px;color:#1f6574;background:#eaf5f6;text-align:center}.matrix-side{font-size:11px;font-weight:700;color:#8e6688;background:#fbf5f9;display:flex;align-items:center}.matrix-cell{background:#fff;min-height:74px;display:flex;gap:5px;flex-wrap:wrap;align-content:flex-start}.matrix-chip{padding:5px 7px;border-radius:6px;color:#225969;background:#e4f4f4;border:1px solid #c8e7e4;font-size:10px}.matrix-chip.future{color:#986229;background:#fff7eb;border-color:#f3e0c8}.matrix-chip.external{color:#8271a4;background:#f5f0fa;border-color:#e6daef}
+.protocol-rows{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.protocol{padding:17px 14px;border:1px solid var(--line);border-radius:12px;background:#fff}.protocol strong{display:block;color:#268b87;font-size:11px}.protocol p{font-size:12px;color:#405c6d;line-height:1.65;min-height:81px}.protocol label{display:flex;align-items:center;gap:6px;color:#8a9ca5;font-size:11px}.experiment-flex{display:grid;grid-template-columns:1.2fr 1fr;gap:13px;margin-top:15px}.content-card{padding:19px 20px;background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:0 5px 22px #203d4c09}.content-card h3{margin:0 0 16px;font-size:15px}.pipeline{margin-bottom:8px;display:flex;align-items:center;flex-wrap:wrap;gap:7px;border:1px solid #e7eef0;background:#f7fafb;padding:10px;font-size:11px;border-radius:8px;color:#3e5c6b}.pipeline b{color:#65a6a5}.pipeline em{font-size:10px;font-style:normal;margin-left:auto;color:#2e9092}.check-row{display:flex;align-items:flex-start;gap:8px;border-bottom:1px solid #f0f4f5;padding:11px 2px;color:#516e7b;font-size:11px;line-height:1.55}.check-row:last-child{border-bottom:0}
+.capture-grid{display:grid;grid-template-columns:340px minmax(0,1fr);gap:15px}.capture-form{align-self:start}.capture-form h3{margin-top:7px}.content-card label,.modal-body label{display:block;font-size:11px;color:#607c89;margin-bottom:13px;font-weight:700}.content-card label input,.content-card label select,.content-card label textarea,.modal-body input,.modal-body textarea,.modal-body select{display:block;width:100%;min-width:0;border:1px solid #dbe7eb;background:#fbfdfd;border-radius:8px;padding:10px 11px;color:#254556;font-size:12px;margin-top:7px;outline:0}.content-card input:focus,.content-card textarea:focus,.content-card select:focus,.modal-body input:focus,.modal-body textarea:focus,.modal-body select:focus{border-color:#5bbebb}.input-hint{color:#9aabb4;font-size:10px;line-height:1.6}.column-title,.queue-header{display:flex;align-items:center;gap:8px;margin:0 0 13px;font-size:14px}.tiny-badge{font-size:10px;background:#e0f2ef;color:#148c81;padding:4px 8px;border-radius:100px}.inbox-list,.paper-queue{display:flex;flex-direction:column;gap:9px}.inbox-item{background:#fff;border:1px solid #e1e9eb;border-radius:11px;padding:16px 17px;box-shadow:0 4px 16px #24455506}.item-head{display:flex;align-items:flex-start;justify-content:space-between;gap:9px}.item-head strong{font-size:13px;line-height:1.5}.inbox-item p{font-size:11px;color:#7a929e;line-height:1.7;margin:8px 0}.item-meta{font-size:10px;color:#9cadb6}.item-controls{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.item-controls button{border:1px solid #d7e9ea;background:#f0f8f7;border-radius:6px;color:#297b80;padding:7px 9px;font-size:10px}.item-controls button.negative{color:#b37968;background:#fff8f4;border-color:#f4e2d8}.empty-state{min-height:170px;background:#fff;border:1px dashed #d2e3e7;border-radius:13px;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#97aab4;text-align:center;padding:23px}.empty-state span{color:#43a8a7;font-size:32px}.empty-state h3{font-size:14px;color:#648390;margin:10px 0 4px}.empty-state p{font-size:11px;margin:0;max-width:290px;line-height:1.7}
+
+.floating-capture{position:fixed;bottom:24px;right:24px;z-index:7;border:1px solid #e3f4f1;background:#147b83;color:#fff;padding:11px 15px;border-radius:12px;box-shadow:0 10px 25px #156b7966;font-size:17px}.floating-capture span{font-size:12px;font-weight:700;margin-left:5px}.shell:has(.detail-panel.open) .floating-capture{right:367px}
+.modal-root{position:fixed;inset:0;z-index:30;background:#0a2431a8;display:flex;align-items:center;justify-content:center;padding:20px}.modal-root[hidden]{display:none}.modal{width:min(610px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:16px;box-shadow:0 30px 80px #061c2a65}.modal-header{padding:22px 24px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.modal-header h3{margin:0;font-size:17px}.modal-body{padding:21px 24px}.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.toast{position:fixed;z-index:40;bottom:26px;left:50%;transform:translateX(-50%);background:#173d4b;color:#fff;border-radius:9px;box-shadow:0 7px 30px #0b2f4066;padding:12px 17px;font-size:12px;max-width:min(600px,90vw)}.toast[hidden]{display:none}
+@media(max-width:1350px){.shell{grid-template-columns:215px minmax(0,1fr) 0}.shell:has(.detail-panel.open){grid-template-columns:215px minmax(0,1fr) 315px}.search-wrap{width:225px}.workspace-heading{padding:20px}.topbar{padding:12px 20px}.view{padding-left:20px;padding-right:20px}.protocol-rows{grid-template-columns:repeat(3,1fr)}.shell:has(.detail-panel.open) .floating-capture{right:335px}}
+@media(max-width:1060px){.shell,.shell:has(.detail-panel.open){grid-template-columns:190px minmax(0,1fr)}.detail-panel{position:fixed;right:0;width:330px;box-shadow:-20px 0 60px #123b4a33;z-index:12}.sidebar{padding-left:9px;padding-right:9px}.workspace-heading h1{font-size:21px}.heading-stats{display:none}.top-actions{gap:5px}.top-actions .search-wrap{width:220px}.top-actions .btn.secondary{display:none}.roadmap-board{grid-template-columns:1fr}.floating-capture,.shell:has(.detail-panel.open) .floating-capture{right:24px}.graph-stage{min-height:610px}}
+@media(max-width:700px){.shell,.shell:has(.detail-panel.open){display:block}.sidebar{height:auto;min-height:auto;position:relative;padding:12px 14px}.identity{padding:3px}.sidebar .sidebar-section-label,.sidebar .type-filters,.sidebar .sidebar-divider,.sidebar-footer{display:none}.navigation{flex-direction:row;overflow-x:auto;gap:5px;margin-top:10px}.nav-btn{flex-shrink:0;width:auto;padding:7px 10px;font-size:11px}.nav-btn .navico{font-size:15px;min-width:13px}.topbar{flex-direction:column;align-items:stretch}.top-actions .search-wrap{flex:1}.workspace-heading{padding:17px 15px}.view{padding-left:12px;padding-right:12px}.graph-stage{min-height:580px}.graph-corner{left:10px;top:10px;padding:10px}.graph-corner strong{font-size:14px}.graph-legend{right:8px;bottom:30px;gap:6px}.view-toolbar{overflow:auto;min-height:53px}.graph-bottom-note{display:none}.capture-grid,.experiment-flex{display:block}.protocol-rows{grid-template-columns:1fr}.roadmap-board{grid-template-columns:1fr}.detail-panel{width:min(370px,94vw)}.floating-capture{bottom:14px;right:14px}}
+/* Standalone interactive SVG graph when CDN is not reachable */
+#networkFallback{position:absolute;inset:0;z-index:3;display:block;overflow:hidden;pointer-events:auto;min-height:0}
+#networkFallback svg{display:block;width:100%;height:100%}
+/* V3: research questions are the primary graph anchors; Benchmark protocol lives only in its detail panel. */
+.lineage-chain{display:flex;flex-direction:column;gap:10px}.lineage-family{border:1px solid #e8e0d0;background:#fdfbf7;border-radius:10px;padding:10px}.lineage-hub{font-size:12px;color:#785b32;font-weight:750;border:0;background:transparent;padding:2px;text-align:left;width:100%}.lineage-hub span{float:right;color:#a98f67;font-size:10px}.lineage-refs{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}.lineage-refs button{padding:5px 8px;border-radius:5px;border:1px solid #e4dbc8;background:#fff;color:#6c6557;font-size:11px;text-align:left;line-height:1.5}.relation-btn small{font-size:10px;font-weight:400;color:#798d98;line-height:1.5}.benchmark-protocol{padding-top:3px}.benchmark-paths{margin:15px 0;background:#f8fbf9;border:1px solid #dbece5;border-radius:9px;padding:11px}.benchmark-paths p{margin:0 0 7px;font-size:11px;font-weight:800;color:#286f71}.benchmark-paths div{font-size:11px;line-height:1.6;color:#59717c;margin:7px 0;padding-left:8px;border-left:2px solid #a7d6cb}.benchmark-checklist{margin:18px 0}.benchmark-checklist>strong{font-size:11px;display:block;margin-bottom:11px;color:#385c6a}.bench-task{display:flex;align-items:flex-start;gap:9px;line-height:1.65;margin-bottom:8px;padding:9px;background:#fbfcfd;border:1px solid #e8eef2;border-radius:7px;font-size:11px;color:#4b6671}.bench-task input{accent-color:#208c85;flex-shrink:0;margin-top:3px}.bench-task b{color:#285d6e}.graph-stage .graph-corner{max-width:255px}.stage-list .road-card:first-child{background:#fff1f2;border-color:#ecd9dc}.stage-list .road-card:first-child strong{color:#a74658}
+
+/* Category legend is already visible as a filter list in the sidebar. */
+.graph-legend{display:none!important}
+
+/* V4: quick manual paper capture (no discovery UI) */
+.paper-modal-intro{padding:11px 13px;background:#f0f7f8;border:1px solid #dcebed;border-radius:9px;color:#496776;font-size:12px;line-height:1.7;margin-bottom:17px}.optional-note{font-weight:400;color:#8c9faa}.legacy-papers{margin-top:10px;border:1px solid #e1e9ef;padding:9px;border-radius:8px;font-size:12px}.legacy-papers summary{cursor:pointer;color:#507d8a;font-weight:700}.legacy-list{max-height:170px;overflow:auto;display:grid;gap:5px;margin-top:9px}.legacy-list button{display:block;width:100%;background:#f7fafb;color:#35556a;border:1px solid #e4ecef;text-align:left;padding:8px 10px;border-radius:6px;cursor:pointer;font-size:12px}
+
+/* V5 · Scientific question hierarchy and a truly hierarchical roadmap. */
+.graph-stage{min-height:690px}
+.graph-corner{max-width:290px;padding:10px 13px}
+.graph-corner strong{font-size:15px;margin-top:5px}.graph-corner small{font-size:10px;line-height:1.55}
+.graph-legend{grid-template-columns:repeat(2,auto);gap:7px 13px;padding:9px 10px}
+.graph-bottom-note{font-size:10px;max-width:67%;line-height:1.5}
+.roadmap-board{display:block}
+.logic-root{position:relative;text-align:center;background:linear-gradient(110deg,#163e55,#174b5a);color:white;padding:27px 20px;border-radius:16px;box-shadow:var(--shadow);margin:0 auto 28px;max-width:880px}
+.logic-root:after{content:'↓';position:absolute;bottom:-25px;left:calc(50% - 10px);color:#80aab9;font-size:24px;font-weight:800}
+.logic-root span{font-size:10px;letter-spacing:2px;color:#9dd5d0;font-weight:850;display:block;margin-bottom:12px}
+.logic-root button{font-size:19px;font-weight:800;color:white;background:transparent;border:0;padding:0;cursor:pointer}
+.logic-root p{font-size:12px;color:#bdd6dc;margin:11px 0 0}
+.logic-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.logic-branch{background:white;border:1px solid #e2e8ed;box-shadow:var(--shadow);border-radius:15px;overflow:hidden}
+.logic-branch.fidelity{--logic:#168b94;--light:#e8f8f6;--dark:#146d76}
+.logic-branch.utility{--logic:#8375b9;--light:#f2edfa;--dark:#6b5799}
+.logic-branch.decision{--logic:#c58e42;--light:#fff5e8;--dark:#91682e}
+.logic-branch-head{border:0;text-align:left;width:100%;background:linear-gradient(120deg,var(--light),#fff);padding:21px;display:flex;gap:13px;align-items:flex-start;color:var(--ink)}
+.logic-branch-head:hover{filter:saturate(1.15)}
+.logic-badge{flex:none;width:39px;height:39px;background:var(--logic);color:#fff;border-radius:12px;display:grid;place-items:center;font-weight:900;font-size:19px}
+.logic-branch-head small{font-size:10px;letter-spacing:.5px;color:var(--dark);font-weight:750}
+.logic-branch-head h3{font-size:22px;margin:4px 0 7px;color:#243e50}
+.logic-branch-head p{font-size:12px;color:#627c89;margin:0;line-height:1.6}
+.logic-branch-head>strong{font-size:10px;color:var(--dark);white-space:nowrap;margin-left:auto}
+.logic-questions{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:11px;padding:12px}
+.logic-question{padding:13px;border:1px solid #e4eaf0;border-radius:10px;background:#fff;min-width:0}
+.logic-question-head{width:100%;background:transparent;border:0;text-align:left;color:var(--dark);display:flex;justify-content:space-between;padding:0;gap:5px}
+.logic-question-head b{font-size:13px}.logic-question-head span{opacity:.55}
+.logic-question p{font-size:11px;line-height:1.55;color:#69818e;min-height:32px;margin:8px 0 11px}
+.logic-paper-row{display:flex;gap:6px;flex-wrap:wrap}
+.logic-paper{border:1px solid #dfe9ef;background:#f9fbfc;padding:7px 9px;border-radius:7px;text-align:left;display:flex;flex-direction:column;gap:4px;min-width:95px}
+.logic-paper b{font-size:11px;color:#2b5262}.logic-paper small{font-size:9px;color:#98a6ad;overflow:hidden;text-overflow:ellipsis;max-width:155px}
+.logic-paper:hover{border-color:var(--logic);background:var(--light)}
+.logic-links{max-width:840px;margin:16px auto 13px;padding:13px 20px;background:#f0f6f9;border:1px dashed #b4cbd4;border-radius:12px;display:flex;justify-content:space-around;gap:15px;flex-wrap:wrap;font-size:12px;color:#597787;text-align:center}
+.logic-links b{color:#1b697a}
+.logic-last{max-width:970px;margin:0 auto}.logic-last .logic-questions{grid-template-columns:1fr}
+.logic-last .logic-question{display:grid;grid-template-columns:1fr 2fr;align-items:start;gap:10px}.logic-last .logic-question p{margin:0}
+.logic-last .logic-paper-row{grid-column:1 / -1}
+.logic-footer{margin-top:14px;border-left:3px solid #94b5c0;background:#f7fafb;border-radius:5px;padding:12px 16px;font-size:12px;color:#66808d;line-height:1.7}
+@media(max-width:1100px){.logic-pair{grid-template-columns:1fr}.logic-questions{grid-template-columns:repeat(auto-fit,minmax(185px,1fr))}.logic-branch-head>strong{display:none}}
+@media(max-width:680px){.logic-questions{grid-template-columns:1fr}.logic-last .logic-question{display:block}.logic-last .logic-question p{margin:8px 0 11px}.logic-root button{font-size:16px}.graph-stage{min-height:520px}.graph-legend{display:none}}
+
+/* V6 single rendering layer: overrides older #networkFallback rule. */
+#networkFallback[hidden]{display:none!important;visibility:hidden!important;pointer-events:none!important}
+#network{isolation:isolate}
+.research-story-title{margin:0 auto 20px;text-align:center;padding:18px 25px;max-width:940px}
+.research-story-title span{display:block;letter-spacing:1.5px;font-size:10px;font-weight:850;color:#1b9994}
+.research-story-title strong{font-size:19px;display:block;margin:10px 0}
+.research-story-title p{margin:0;color:#7c919c;font-size:12px;line-height:1.7}
+.logic-sequence{display:grid;grid-template-columns:minmax(0,1.1fr) 90px minmax(0,.88fr) 90px minmax(0,1.1fr);gap:10px;align-items:stretch}
+.logic-sequence .logic-branch{min-width:0}
+.logic-sequence .logic-questions{grid-template-columns:1fr}
+.logic-transition{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px;text-align:center;color:#7d98a5;font-size:11px;line-height:1.65}
+.logic-transition span{font-size:39px;font-weight:800;color:#14a09b}
+.logic-transition b{font-weight:600}
+@media(max-width:1350px){.logic-sequence{grid-template-columns:1fr;gap:10px}.logic-transition{flex-direction:row;padding:6px 0}.logic-transition span{transform:rotate(90deg);font-size:28px}.logic-sequence .logic-questions{grid-template-columns:repeat(auto-fit,minmax(185px,1fr))}}
+@media(max-width:680px){.logic-sequence .logic-questions{grid-template-columns:1fr}}
+
+</style>
+<!-- vis-network 可选：如网络不可用，继续使用内置离线 SVG 动态图谱 -->
+  <script async src="https://unpkg.com/vis-network@9.1.9/standalone/umd/vis-network.min.js" onload="window.dispatchEvent(new Event('atlas:vis-ready'))"></script>
+  <script>
+/* EEG Research Atlas V6 · Fidelity → Decision → Utility */
+window.ATLAS_SEED = {
+  "version": 6,
+  "nodes": [
+    {
+      "id": "q-recovery",
+      "label": "Q1 · 哪些缺失 EEG 信息能够恢复？",
+      "type": "question",
+      "status": "核心科学问题",
+      "description": "研究空间欠采样下的可恢复信息边界、条件生成先验与缺失信息恢复。可恢复性是信号保真的基础，但需要与可信度区分。",
+      "contribution": "Problem",
+      "narrative": "Root Cause",
+      "evidence": [],
+      "stage": 0,
+      "subtitle": "Recoverability · 条件重建",
+      "question": "缺失空间信息中哪些成分可从稀疏观测与先验中恢复？",
+      "tags": [
+        "recoverability",
+        "spatial reconstruction"
+      ],
+      "shortLabel": "Q1 · 信息可恢复性",
+      "domain": "fidelity"
+    },
+    {
+      "id": "q-utility",
+      "label": "Q5 · 更高保真是否带来更好的解码？",
+      "type": "question",
+      "status": "核心科学问题",
+      "description": "检验波形、频带和空间拓扑层面的信号保真，与情绪、MI、SSVEP 等任务收益之间的关系。两者可能一致，也可能不一致，不能预设结论。",
+      "contribution": "Problem",
+      "narrative": "New Evaluation",
+      "evidence": [],
+      "stage": 0,
+      "subtitle": "Signal Fidelity vs Task Utility",
+      "question": "信号重建的指标改善，在何种任务和条件下转化为下游收益？",
+      "shortLabel": "Q5 · 保真与解码关系",
+      "domain": "utility"
+    },
+    {
+      "id": "q-choice",
+      "label": "Q4 · 什么时候值得进行 EEG 重建？",
+      "type": "question",
+      "status": "核心科学问题",
+      "description": "对不同任务、缺失率、噪声和计算预算，比对直接解码、插值与学习型重建的收益和代价。Benchmark 为此提供统一证据。",
+      "contribution": "Problem",
+      "narrative": "Root Cause",
+      "evidence": [],
+      "stage": 0,
+      "subtitle": "Decision Boundary",
+      "question": "什么场景下使用 SR 比直接解码或传统插值更合适？",
+      "shortLabel": "Q4 · 何时值得重建",
+      "domain": "decision"
+    },
+    {
+      "id": "imac",
+      "label": "IMAC",
+      "subtitle": "Spatial Imputation / Cross-domain",
+      "type": "work",
+      "status": "已发表",
+      "venue": "ACM MM 2025",
+      "contribution": "Problem",
+      "narrative": "Counter-intuitive",
+      "description": "空间补全促进跨域 EEG 表征对齐。",
+      "question": "空间缺失补全是否能够帮助跨域表征学习？",
+      "method": "Spatial imputation-based cross-domain alignment",
+      "stage": 1,
+      "tags": [
+        "EEG",
+        "decoding",
+        "domain alignment"
+      ],
+      "domain": "utility"
+    },
+    {
+      "id": "srgdiff",
+      "label": "SRGDiff",
+      "subtitle": "Step-aware Residual-guided Diffusion",
+      "type": "work",
+      "status": "投稿/状态待核实",
+      "venue": "ICLR 2026 稿件",
+      "contribution": "Method",
+      "narrative": "Root Cause",
+      "description": "利用残差方向监督、步长调制与反向扩散过程的引导信息进行 EEG 空间重建。",
+      "question": "扩散模型在不同反向步长下如何利用解析残差方向？",
+      "method": "Step-aware residual-guided diffusion",
+      "stage": 1,
+      "tags": [
+        "diffusion",
+        "spatial SR"
+      ],
+      "domain": "fidelity"
+    },
+    {
+      "id": "cafe",
+      "label": "CAFE",
+      "subtitle": "Channel-autoregressive",
+      "type": "work",
+      "status": "研究成果/状态待核实",
+      "venue": "AAAI 稿件",
+      "contribution": "Method",
+      "narrative": "Counter-intuitive",
+      "description": "使用几何顺序和自回归方式逐步恢复 EEG 通道。",
+      "question": "EEG 空间通道是否必须同时重建？",
+      "method": "Geometry-ordered channel autoregression",
+      "stage": 1,
+      "tags": [
+        "autoregressive"
+      ],
+      "domain": "fidelity"
+    },
+    {
+      "id": "etno",
+      "label": "ETNO",
+      "subtitle": "Shared Electrode–Time Field",
+      "type": "work",
+      "status": "研究成果/状态待核实",
+      "venue": "AAAI 稿件",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "description": "使用共享电极—时间连续表示建立跨 montage 的 EEG 空间时序场。",
+      "question": "能否用统一的连续场表达电极和时间？",
+      "method": "Electrode-time neural operator / field",
+      "stage": 1,
+      "tags": [
+        "neural field",
+        "continuous representation"
+      ],
+      "domain": "fidelity"
+    },
+    {
+      "id": "scalpinr",
+      "label": "ScalpINR",
+      "subtitle": "Coordinate-queryable Scalp Field",
+      "type": "work",
+      "status": "研究成果/状态待核实",
+      "venue": "ICLR 2027 稿件",
+      "contribution": "Method",
+      "narrative": "Counter-intuitive",
+      "description": "面向任意电极位置的支持条件神经场与连续坐标查询重建。",
+      "question": "能否在任意空间坐标查询稠密 EEG？",
+      "method": "Support-conditioned coordinate-queryable scalp field",
+      "stage": 1,
+      "tags": [
+        "INR",
+        "montage"
+      ],
+      "domain": "fidelity"
+    },
+    {
+      "id": "dsf",
+      "label": "DSF",
+      "subtitle": "Dynamic State Filtering",
+      "type": "work",
+      "status": "投稿中/待核实",
+      "venue": "ICLR 2027 稿件",
+      "contribution": "Problem",
+      "narrative": "Root Cause",
+      "description": "将连续 EEG 空间重建建模为预测—创新—状态更新的顺序状态估计。",
+      "question": "历史动态与当前部分观测如何共同更新稠密状态？",
+      "method": "Prediction–innovation–update",
+      "stage": 1,
+      "tags": [
+        "filtering",
+        "streaming"
+      ],
+      "domain": "fidelity"
+    },
+    {
+      "id": "benchmark",
+      "label": "EEG-SR Benchmark",
+      "subtitle": "When & Why Reconstruct?",
+      "type": "benchmark",
+      "status": "规划中",
+      "contribution": "Benchmark",
+      "narrative": "New Evaluation",
+      "description": "在信号保真方法取得一定进展后，通过统一的信号指标、解码收益及成本协议比较直接解码、插值与学习式 SR，回答「何时值得重建」，并为后续任务有效研究发现关键问题。该结论仍需实验验证。",
+      "question": "何时需要空间超分，何时直接解码或插值更合适？",
+      "method": "Uniform protocol across Sparse / Interpolation / SR / Full reference",
+      "evidence": [
+        "A/B/C/D 同协议",
+        "NMSE–task utility 联合分析",
+        "跨被试与采集设置泛化"
+      ],
+      "stage": 2,
+      "tags": [
+        "benchmark",
+        "task utility"
+      ],
+      "domain": "decision"
+    },
+    {
+      "id": "ravel",
+      "label": "RAVEL",
+      "subtitle": "Layer-wise Recoverable Information",
+      "type": "future",
+      "status": "构思/草稿",
+      "contribution": "Mechanism",
+      "narrative": "Counter-intuitive",
+      "description": "分析 EEG Foundation Model 各层对原始 EEG、频带与空间信息的可恢复性，并探索如何辅助重建。既研究 Q1 的信号可恢复性，也为 Q5 的任务相关信息保留提供可能的机制性启发。",
+      "question": "基础模型的哪一层更适合恢复空间与频段细节？",
+      "method": "Layer-wise recoverability analysis + guidance (planned)",
+      "stage": 3,
+      "tags": [
+        "EEG FM",
+        "recoverability"
+      ],
+      "domain": "utility"
+    },
+    {
+      "id": "taper",
+      "label": "TAPER",
+      "subtitle": "Task-Preserving EEG Reconstruction",
+      "type": "future",
+      "status": "构思/草稿",
+      "contribution": "Method",
+      "narrative": "Root Cause",
+      "description": "将重建的信号保真与下游任务信息保持联系起来，通过任务表征一致性等约束探索更有用的重建。",
+      "question": "怎样保证重建后的信号对不同脑电解码任务依然有用？",
+      "method": "Task-conditioned reconstruction + frozen reference (planned)",
+      "stage": 3,
+      "tags": [
+        "task-aware",
+        "foundation model"
+      ],
+      "domain": "utility"
+    },
+    {
+      "id": "adaptive",
+      "label": "Adaptive Reconstruction",
+      "subtitle": "选择直接解码 / 插值 / SR",
+      "type": "future",
+      "status": "候选方向",
+      "contribution": "Method",
+      "narrative": "Efficiency",
+      "description": "依据缺失率、任务与成本约束选择重建路径；是否独立成文取决于 Benchmark 结果。",
+      "question": "能否以更小代价获得相当的任务表现？",
+      "method": "Task/setting-aware decision policy (planned)",
+      "stage": 3,
+      "tags": [
+        "adaptive",
+        "efficiency"
+      ],
+      "domain": "decision"
+    },
+    {
+      "id": "zuna",
+      "label": "ZUNA",
+      "subtitle": "Flexible EEG Superresolution",
+      "type": "external",
+      "status": "外部论文",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "description": "可适配不同电极位置和数量的 EEG 超分辨率方法，是 Benchmark 重点考虑的外部基线。",
+      "url": "https://arxiv.org/abs/2602.18478",
+      "stage": 0,
+      "tags": [
+        "EEG SR",
+        "baseline"
+      ],
+      "domain": "fidelity"
+    },
+    {
+      "id": "arena",
+      "label": "EEG-Arena",
+      "subtitle": "FM Benchmark at Scale",
+      "type": "external",
+      "status": "外部论文",
+      "contribution": "Benchmark",
+      "narrative": "New Evaluation",
+      "description": "评估 EEG 基础模型在多任务与通道设置下的迁移表现，可用于参考下游标准化协议。",
+      "url": "https://arxiv.org/abs/2609.32743",
+      "stage": 0,
+      "tags": [
+        "EEG FM",
+        "EEG decoding"
+      ]
+    },
+    {
+      "id": "fmbench",
+      "label": "EEG-FM-Bench",
+      "subtitle": "Foundation-model Evaluation",
+      "type": "external",
+      "status": "外部论文",
+      "contribution": "Benchmark",
+      "narrative": "New Evaluation",
+      "description": "脑电基础模型统一评测的相关工作，可借鉴多范式与评估协议。",
+      "url": "https://proceedings.mlr.press/v306/xiong26f.html",
+      "stage": 0,
+      "tags": [
+        "EEG FM",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "fmreview",
+      "label": "EEG FM Open Problems",
+      "subtitle": "Progresses, Benchmarking, and Open Problems",
+      "type": "external",
+      "status": "外部论文",
+      "contribution": "Benchmark",
+      "narrative": "New Evaluation",
+      "description": "EEG Foundation Models 进展、评测与开放问题研究。",
+      "url": "https://arxiv.org/abs/2601.17883",
+      "stage": 0,
+      "tags": [
+        "EEG FM",
+        "survey"
+      ]
+    },
+    {
+      "id": "decoder",
+      "label": "EEG Decoding · 研究前沿",
+      "subtitle": "解码热点 / 下游任务",
+      "type": "topic",
+      "status": "持续关注",
+      "contribution": "Problem",
+      "narrative": "Real-world",
+      "description": "EEG Decoding 相关工作入口：手动添加论文链接，再连接到对应科学问题、方法谱系和已有论文。",
+      "stage": 0,
+      "tags": [
+        "decoder",
+        "downstream"
+      ]
+    },
+    {
+      "id": "interpolation",
+      "label": "插值与直接解码",
+      "subtitle": "Non-SR baselines",
+      "type": "topic",
+      "status": "基线集合",
+      "contribution": "Method",
+      "narrative": "Efficiency",
+      "description": "球面样条、邻域插值及无需超分直接训练解码器的路径，是 Benchmark 不可省略的对照。",
+      "stage": 0,
+      "tags": [
+        "spherical spline",
+        "direct decoding"
+      ]
+    },
+    {
+      "id": "q-geometry",
+      "label": "Q2 · 如何实现空间与时间泛化？",
+      "subtitle": "Spatial Geometry / Montage",
+      "type": "question",
+      "status": "核心科学问题",
+      "contribution": "Problem",
+      "narrative": "Root Cause",
+      "description": "不同电极位置、montage、跨被试配置和连续时间条件下，如何维持合理的空间重建？包括神经场、算子与顺序状态更新。",
+      "question": "改变电极布局或时间条件，重建方法还能可靠使用吗？",
+      "evidence": [],
+      "stage": 0,
+      "tags": [
+        "Spatial Geometry / Montage"
+      ],
+      "shortLabel": "Q2 · 时空泛化",
+      "domain": "fidelity"
+    },
+    {
+      "id": "q-dynamics",
+      "label": "Q3 · 如何评估与保证重建可靠性？",
+      "subtitle": "Temporal Dynamics",
+      "type": "question",
+      "status": "核心科学问题",
+      "contribution": "Problem",
+      "narrative": "Root Cause",
+      "description": "研究观测证据不充分时的重建可信度、生成风险及其抑制。EviReward 是针对这一问题的未来探索，结果未得到验证。",
+      "question": "缺失通道没有真值时，如何检测及减少看似合理但缺乏观测依据的重建？",
+      "evidence": [],
+      "stage": 0,
+      "tags": [
+        "Temporal Dynamics"
+      ],
+      "shortLabel": "Q3 · 可信与可靠性",
+      "domain": "fidelity"
+    },
+    {
+      "id": "q-foundation",
+      "label": "Q6 · 如何保留对解码有价值的信息？",
+      "subtitle": "Foundation Representations",
+      "type": "question",
+      "status": "核心科学问题",
+      "contribution": "Problem",
+      "narrative": "Root Cause",
+      "description": "如何利用全通道教师、任务表征与 EEG 基础模型，使空间重建保留对解码有价值的信息？RAVEL 同时涉及基础模型对原始信号的可恢复性，应跨层连接 Q1/Q5。",
+      "question": "如何让重建兼顾信号真实性与下游任务所需的表征？",
+      "evidence": [],
+      "stage": 0,
+      "tags": [
+        "Foundation Representations"
+      ],
+      "shortLabel": "Q6 · 任务信息保留",
+      "domain": "utility"
+    },
+    {
+      "id": "evireward",
+      "label": "EviReward",
+      "subtitle": "Evidence-grounded Reconstruction Reward · 研究草稿",
+      "type": "future",
+      "status": "未来工作 · 草稿/方案待确认",
+      "contribution": "Method",
+      "narrative": "Root Cause",
+      "description": "设想在缺失导联真值不可见时，利用可观测信号与基础模型表征构建重建可靠性的证据或奖励，对生成重建进行评估/指导；尚属研究构想。",
+      "question": "在测试时看不到缺失导联真实信号的条件下，能否评估候选重建的可靠性并据此优化重建器？",
+      "method": "冻结 EEG FM 特征 + 多维信号证据 + 可见通道交叉拟合审计 + 不确定性估计 + 证据奖励优化（拟议）",
+      "stage": 3,
+      "tags": [
+        "EEG SR",
+        "EEG foundation model",
+        "reward modeling",
+        "reconstruction reliability"
+      ],
+      "key_difference": "与 RAVEL 的逐层信息可恢复性、TAPER 的任务表征一致性不同，EviReward 聚焦重建候选在缺失真值不可见时的可靠性评估与奖励指导。",
+      "domain": "fidelity"
+    },
+    {
+      "id": "m-diffusion",
+      "label": "Diffusion / Score Models",
+      "subtitle": "扩散与分数建模",
+      "description": "DDPM、score-based/conditional diffusion 的反向生成与条件控制。SRGDiff 的相关方法谱系，不等价于 EEG 专用 SR。",
+      "type": "method",
+      "status": "技术谱系",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "question": "该方法家族可以支持哪些 EEG 空间重建问题？",
+      "stage": 0,
+      "tags": [
+        "Diffusion / Score Models",
+        "扩散与分数建模"
+      ]
+    },
+    {
+      "id": "m-autoregressive",
+      "label": "Autoregressive Models",
+      "subtitle": "自回归生成",
+      "description": "将变量或通道组织成生成顺序，通过条件依赖逐项预测；CAFE 的方法谱系。",
+      "type": "method",
+      "status": "技术谱系",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "question": "该方法家族可以支持哪些 EEG 空间重建问题？",
+      "stage": 0,
+      "tags": [
+        "Autoregressive Models",
+        "自回归生成"
+      ]
+    },
+    {
+      "id": "m-inr",
+      "label": "Implicit Neural Representation",
+      "subtitle": "隐式神经表示",
+      "description": "使用连续坐标查询信号；支撑 ScalpINR 的技术背景。",
+      "type": "method",
+      "status": "技术谱系",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "question": "该方法家族可以支持哪些 EEG 空间重建问题？",
+      "stage": 0,
+      "tags": [
+        "Implicit Neural Representation",
+        "隐式神经表示"
+      ]
+    },
+    {
+      "id": "m-neural-operator",
+      "label": "Neural Operators / Fields",
+      "subtitle": "连续算子与场",
+      "description": "函数到函数映射、共享空间—时间表达；与 ETNO 的表示方式相关。",
+      "type": "method",
+      "status": "技术谱系",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "question": "该方法家族可以支持哪些 EEG 空间重建问题？",
+      "stage": 0,
+      "tags": [
+        "Neural Operators / Fields",
+        "连续算子与场"
+      ]
+    },
+    {
+      "id": "m-state",
+      "label": "State Estimation / Filtering",
+      "subtitle": "状态估计与滤波",
+      "description": "动态预测、观测创新、状态更新；与 DSF 的时序建模相关。",
+      "type": "method",
+      "status": "技术谱系",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "question": "该方法家族可以支持哪些 EEG 空间重建问题？",
+      "stage": 0,
+      "tags": [
+        "State Estimation / Filtering",
+        "状态估计与滤波"
+      ]
+    },
+    {
+      "id": "m-domain",
+      "label": "Spatial Imputation & Domain Alignment",
+      "subtitle": "缺失值补全与域对齐",
+      "description": "补全与跨域特征一致性；关联 IMAC。",
+      "type": "method",
+      "status": "技术谱系",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "question": "该方法家族可以支持哪些 EEG 空间重建问题？",
+      "stage": 0,
+      "tags": [
+        "Spatial Imputation & Domain Alignment",
+        "缺失值补全与域对齐"
+      ]
+    },
+    {
+      "id": "m-decoder",
+      "label": "EEG Decoding Models",
+      "subtitle": "脑电解码方法",
+      "description": "Emotion / MI / SSVEP / EEG-to-image 的判别式或预训练模型。",
+      "type": "method",
+      "status": "技术谱系",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "question": "该方法家族可以支持哪些 EEG 空间重建问题？",
+      "stage": 0,
+      "tags": [
+        "EEG Decoding Models",
+        "脑电解码方法"
+      ]
+    },
+    {
+      "id": "m-foundation",
+      "label": "EEG Foundation Models",
+      "subtitle": "脑电基础模型",
+      "description": "预训练层级表征、跨任务迁移与信息保留；关联 RAVEL / TAPER。",
+      "type": "method",
+      "status": "技术谱系",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "question": "该方法家族可以支持哪些 EEG 空间重建问题？",
+      "stage": 0,
+      "tags": [
+        "EEG Foundation Models",
+        "脑电基础模型"
+      ]
+    },
+    {
+      "id": "m-interpolation",
+      "label": "Interpolation / Spherical Splines",
+      "subtitle": "传统空间插值",
+      "description": "球面样条、邻近插值、直接解码，是 Benchmark 的非学习基线。",
+      "type": "method",
+      "status": "技术谱系",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "question": "该方法家族可以支持哪些 EEG 空间重建问题？",
+      "stage": 0,
+      "tags": [
+        "Interpolation / Spherical Splines",
+        "传统空间插值"
+      ]
+    },
+    {
+      "id": "ref-ddpm",
+      "label": "DDPM",
+      "subtitle": "Ho et al. · 2020",
+      "url": "https://arxiv.org/abs/2006.11239",
+      "description": "经典扩散概率模型。与 SRGDiff 为通用生成建模方法关联，并非直接 EEG SR 竞品。",
+      "type": "external",
+      "status": "外部相关工作 · 请核对原文",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "question": "这篇论文的关键思想如何启发 EEG 空间重建？",
+      "stage": 0,
+      "tags": [
+        "diffusion"
+      ]
+    },
+    {
+      "id": "ref-score",
+      "label": "Score-based SDE",
+      "subtitle": "Song et al. · 2021",
+      "url": "https://arxiv.org/abs/2011.13456",
+      "description": "扩散与基于分数生成建模的连续时间视角。",
+      "type": "external",
+      "status": "外部相关工作 · 请核对原文",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "question": "这篇论文的关键思想如何启发 EEG 空间重建？",
+      "stage": 0,
+      "tags": [
+        "diffusion",
+        "score"
+      ]
+    },
+    {
+      "id": "ref-wavenet",
+      "label": "WaveNet",
+      "subtitle": "van den Oord et al. · 2016",
+      "url": "https://arxiv.org/abs/1609.03499",
+      "description": "经典逐步生成的自回归模型。与 CAFE 的关联是建模范式，而非相同输入或任务。",
+      "type": "external",
+      "status": "外部相关工作 · 请核对原文",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "question": "这篇论文的关键思想如何启发 EEG 空间重建？",
+      "stage": 0,
+      "tags": [
+        "autoregressive"
+      ]
+    },
+    {
+      "id": "ref-pixelcnn",
+      "label": "PixelCNN",
+      "subtitle": "van den Oord et al. · 2016",
+      "url": "https://arxiv.org/abs/1606.05328",
+      "description": "自回归条件概率分解的经典方法背景。",
+      "type": "external",
+      "status": "外部相关工作 · 请核对原文",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "question": "这篇论文的关键思想如何启发 EEG 空间重建？",
+      "stage": 0,
+      "tags": [
+        "autoregressive"
+      ]
+    },
+    {
+      "id": "ref-siren",
+      "label": "SIREN",
+      "subtitle": "Sitzmann et al. · 2020",
+      "url": "https://arxiv.org/abs/2006.09661",
+      "description": "连续隐式函数表示，通过坐标映射输出信号。",
+      "type": "external",
+      "status": "外部相关工作 · 请核对原文",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "question": "这篇论文的关键思想如何启发 EEG 空间重建？",
+      "stage": 0,
+      "tags": [
+        "INR",
+        "neural field"
+      ]
+    },
+    {
+      "id": "ref-fno",
+      "label": "Fourier Neural Operator",
+      "subtitle": "Li et al. · 2020",
+      "url": "https://arxiv.org/abs/2010.08895",
+      "description": "神经算子建模的代表性工作，与 ETNO 的关联需按照具体算子实现核对。",
+      "type": "external",
+      "status": "外部相关工作 · 请核对原文",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "question": "这篇论文的关键思想如何启发 EEG 空间重建？",
+      "stage": 0,
+      "tags": [
+        "neural operator"
+      ]
+    },
+    {
+      "id": "ref-mamba",
+      "label": "Mamba",
+      "subtitle": "Gu & Dao · 2023",
+      "url": "https://arxiv.org/abs/2312.00752",
+      "description": "现代序列状态空间建模的相关范式；DSF 的预测–创新–更新不等同于 Mamba。",
+      "type": "external",
+      "status": "外部相关工作 · 请核对原文",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "question": "这篇论文的关键思想如何启发 EEG 空间重建？",
+      "stage": 0,
+      "tags": [
+        "state space",
+        "sequence"
+      ]
+    },
+    {
+      "id": "ref-dann",
+      "label": "DANN",
+      "subtitle": "Ganin et al. · 2015",
+      "url": "https://arxiv.org/abs/1505.07818",
+      "description": "域对抗学习代表工作；作为 IMAC 跨域对齐的背景参考。",
+      "type": "external",
+      "status": "外部相关工作 · 请核对原文",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "question": "这篇论文的关键思想如何启发 EEG 空间重建？",
+      "stage": 0,
+      "tags": [
+        "domain adaptation"
+      ]
+    },
+    {
+      "id": "ref-eegnet",
+      "label": "EEGNet",
+      "subtitle": "Lawhern et al. · 2018",
+      "url": "https://arxiv.org/abs/1611.08024",
+      "description": "经典紧凑型 EEG 解码网络，适用于比较是否需要重建再解码。",
+      "type": "external",
+      "status": "外部相关工作 · 请核对原文",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "question": "这篇论文的关键思想如何启发 EEG 空间重建？",
+      "stage": 0,
+      "tags": [
+        "decoder",
+        "EEG"
+      ]
+    },
+    {
+      "id": "ref-labram",
+      "label": "LaBraM",
+      "subtitle": "EEG Foundation Model · ICLR 2024",
+      "type": "external",
+      "status": "公开相关论文",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "description": "以通道 patch 与掩码预测学习通用 EEG 表征。",
+      "url": "https://arxiv.org/abs/2405.18765",
+      "stage": 0,
+      "tags": [
+        "EEG Decoding",
+        "EEG FM"
+      ]
+    },
+    {
+      "id": "ref-bendr",
+      "label": "BENDR",
+      "subtitle": "Self-supervised EEG Pretraining",
+      "type": "external",
+      "status": "公开相关论文",
+      "contribution": "Method",
+      "narrative": "Unification",
+      "description": "使用对比自监督学习获得跨被试、跨设备 EEG 表征。",
+      "url": "https://arxiv.org/abs/2101.12037",
+      "stage": 0,
+      "tags": [
+        "EEG Decoding",
+        "EEG FM"
+      ]
+    },
+    {
+      "id": "ref-conformer",
+      "label": "EEG Conformer",
+      "subtitle": "Transformer for EEG Decoding",
+      "type": "external",
+      "status": "公开相关论文",
+      "contribution": "Method",
+      "narrative": "Efficiency",
+      "description": "卷积与 Transformer 结合的 EEG 解码框架，可作为解码领域参照。",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37015413/",
+      "stage": 0,
+      "tags": [
+        "EEG Decoding",
+        "EEG FM"
+      ]
+    },
+    {
+      "id": "dim-fidelity",
+      "label": "A · Signal Fidelity / 信号保真",
+      "shortLabel": "A · Fidelity｜信号保真",
+      "type": "dimension",
+      "domain": "fidelity",
+      "status": "阶段 A · 信号保真",
+      "description": "先研究如何从稀疏观测中恢复更真实、更可靠的 EEG：可恢复性、时空泛化与可信重建。",
+      "question": "How faithfully can missing EEG signals be reconstructed?",
+      "stage": 0
+    },
+    {
+      "id": "dim-utility",
+      "label": "C · Task Utility / 任务有效性",
+      "shortLabel": "C · Utility｜任务有效",
+      "type": "dimension",
+      "domain": "utility",
+      "status": "阶段 C · 任务导向",
+      "description": "由 Benchmark 识别信号保真与下游收益的关系，进一步用任务相关信息指导 EEG 空间重建。",
+      "question": "Does reconstruction preserve the information needed for EEG decoding?",
+      "stage": 0
+    },
+    {
+      "id": "dim-decision",
+      "label": "B · Reconstruction Decision / 重建决策",
+      "shortLabel": "B · Decision｜重建决策",
+      "type": "dimension",
+      "domain": "decision",
+      "status": "阶段 B · 研究转折点",
+      "description": "在已具备较好重建能力后，借助统一 Benchmark 比较直接解码、插值与学习式 SR，研究何时值得重建，为后续任务有效研究找到关键问题。",
+      "question": "When is reconstruction worth doing?",
+      "stage": 0
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-1",
+      "from": "q-recovery",
+      "to": "srgdiff",
+      "rel": "生成式重建",
+      "kind": "support"
+    },
+    {
+      "id": "edge-2",
+      "from": "q-recovery",
+      "to": "cafe",
+      "rel": "逐通道建模",
+      "kind": "support"
+    },
+    {
+      "id": "edge-3",
+      "from": "q-recovery",
+      "to": "zuna",
+      "rel": "外部 SR 参照",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-4",
+      "from": "q-geometry",
+      "to": "etno",
+      "rel": "连续电极—时间场",
+      "kind": "support"
+    },
+    {
+      "id": "edge-5",
+      "from": "q-geometry",
+      "to": "scalpinr",
+      "rel": "坐标可查询重建",
+      "kind": "support"
+    },
+    {
+      "id": "edge-6",
+      "from": "q-geometry",
+      "to": "zuna",
+      "rel": "不同 montage 参照",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-9",
+      "from": "q-utility",
+      "to": "imac",
+      "rel": "重建连接解码",
+      "kind": "support"
+    },
+    {
+      "id": "edge-10",
+      "from": "q-utility",
+      "to": "benchmark",
+      "rel": "信号/任务联合评估",
+      "kind": "support"
+    },
+    {
+      "id": "edge-11",
+      "from": "q-utility",
+      "to": "taper",
+      "rel": "任务有效性目标",
+      "kind": "motivation"
+    },
+    {
+      "id": "edge-12",
+      "from": "q-utility",
+      "to": "decoder",
+      "rel": "下游任务来源",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-16",
+      "from": "q-foundation",
+      "to": "m-foundation",
+      "rel": "技术背景",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-18",
+      "from": "q-choice",
+      "to": "benchmark",
+      "rel": "评估工具",
+      "kind": "support"
+    },
+    {
+      "id": "edge-19",
+      "from": "q-choice",
+      "to": "adaptive",
+      "rel": "动态策略",
+      "kind": "motivation"
+    },
+    {
+      "id": "edge-20",
+      "from": "q-choice",
+      "to": "interpolation",
+      "rel": "必须对照",
+      "kind": "baseline"
+    },
+    {
+      "id": "edge-21",
+      "from": "m-diffusion",
+      "to": "srgdiff",
+      "rel": "方法谱系：扩散",
+      "kind": "method"
+    },
+    {
+      "id": "edge-22",
+      "from": "m-autoregressive",
+      "to": "cafe",
+      "rel": "方法谱系：自回归",
+      "kind": "method"
+    },
+    {
+      "id": "edge-23",      "from": "m-neural-operator",
+      "to": "etno",
+      "rel": "连续场/算子背景",
+      "kind": "method"
+    },
+    {
+      "id": "edge-24",
+      "from": "m-inr",
+      "to": "scalpinr",
+      "rel": "方法谱系：INR",
+      "kind": "method"
+    },
+    {
+      "id": "edge-25",
+      "from": "m-state",
+      "to": "dsf",
+      "rel": "方法谱系：动态状态",
+      "kind": "method"
+    },
+    {
+      "id": "edge-26",
+      "from": "m-domain",
+      "to": "imac",
+      "rel": "方法谱系：补全与对齐",
+      "kind": "method"
+    },
+    {
+      "id": "edge-27",
+      "from": "m-foundation",
+      "to": "ravel",
+      "rel": "预训练特征来源",
+      "kind": "method"
+    },
+    {
+      "id": "edge-28",
+      "from": "m-foundation",
+      "to": "taper",
+      "rel": "表征约束候选",
+      "kind": "method"
+    },
+    {
+      "id": "edge-29",
+      "from": "m-decoder",
+      "to": "taper",
+      "rel": "下游反馈目标",
+      "kind": "method"
+    },
+    {
+      "id": "edge-30",
+      "from": "m-interpolation",
+      "to": "benchmark",
+      "rel": "传统对照",
+      "kind": "baseline"
+    },
+    {
+      "id": "edge-31",
+      "from": "m-decoder",
+      "to": "decoder",
+      "rel": "解码前沿",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-32",
+      "from": "m-foundation",
+      "to": "decoder",
+      "rel": "预训练与解码",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-33",
+      "from": "ref-ddpm",
+      "to": "m-diffusion",
+      "rel": "经典理论来源",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-34",
+      "from": "ref-score",
+      "to": "m-diffusion",
+      "rel": "相关生成理论",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-35",
+      "from": "ref-wavenet",
+      "to": "m-autoregressive",
+      "rel": "经典自回归",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-36",
+      "from": "ref-pixelcnn",
+      "to": "m-autoregressive",
+      "rel": "自回归分解",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-37",
+      "from": "ref-siren",
+      "to": "m-inr",
+      "rel": "连续坐标表示",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-38",
+      "from": "ref-fno",
+      "to": "m-neural-operator",
+      "rel": "神经算子代表",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-39",
+      "from": "ref-mamba",
+      "to": "m-state",
+      "rel": "状态空间相关范式",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-40",
+      "from": "ref-dann",
+      "to": "m-domain",
+      "rel": "域适应相关文献",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-41",
+      "from": "ref-eegnet",
+      "to": "m-decoder",
+      "rel": "常用解码基线",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-42",
+      "from": "zuna",
+      "to": "benchmark",
+      "rel": "外部 EEG SR 基线",
+      "kind": "baseline"
+    },
+    {
+      "id": "edge-43",
+      "from": "fmbench",
+      "to": "benchmark",
+      "rel": "评测协议参考",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-44",
+      "from": "arena",
+      "to": "benchmark",
+      "rel": "下游评测参照",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-45",
+      "from": "fmreview",
+      "to": "m-foundation",
+      "rel": "综述与开放问题",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-46",
+      "from": "m-decoder",
+      "to": "imac",
+      "rel": "下游分类任务",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-47",
+      "from": "arena",
+      "to": "decoder",
+      "rel": "近期 FM 评估",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-48",
+      "from": "ref-eegnet",
+      "to": "benchmark",
+      "rel": "直接解码参考",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-ref-labram",
+      "from": "ref-labram",
+      "to": "m-foundation",
+      "rel": "基础模型代表",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-ref-bendr",
+      "from": "ref-bendr",
+      "to": "m-foundation",
+      "rel": "自监督预训练代表",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-ref-conformer",
+      "from": "ref-conformer",
+      "to": "m-decoder",
+      "rel": "EEG 解码模型代表",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-q-recovery-evireward",
+      "from": "q-recovery",
+      "to": "evireward",
+      "rel": "重建可信度 / 可恢复信息边界",
+      "kind": "motivation"
+    },
+    {
+      "id": "edge-m-foundation-evireward",
+      "from": "m-foundation",
+      "to": "evireward",
+      "rel": "FM 特征作为奖励证据",
+      "kind": "method"
+    },
+    {
+      "id": "edge-m-diffusion-evireward",
+      "from": "m-diffusion",
+      "to": "evireward",
+      "rel": "候选生成 / 奖励引导",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-srgdiff-evireward",
+      "from": "srgdiff",
+      "to": "evireward",
+      "rel": "生成式重建可作候选骨干",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-conformer-decoder",
+      "from": "ref-conformer",
+      "to": "decoder",
+      "rel": "解码代表工作",
+      "kind": "reference"
+    },
+    {
+      "id": "fidelity-q1",
+      "from": "dim-fidelity",
+      "to": "q-recovery",
+      "rel": "可恢复信息",
+      "kind": "hierarchy"
+    },
+    {
+      "id": "fidelity-q2",
+      "from": "dim-fidelity",
+      "to": "q-geometry",
+      "rel": "时空泛化",
+      "kind": "hierarchy"
+    },
+    {
+      "id": "fidelity-q3",
+      "from": "dim-fidelity",
+      "to": "q-dynamics",
+      "rel": "可信重建",
+      "kind": "hierarchy"
+    },
+    {
+      "id": "edge-q1-q5",
+      "from": "q-recovery",
+      "to": "q-utility",
+      "rel": "保真改善与解码收益不必然一致（待检验）",
+      "kind": "bridge"
+    },
+    {
+      "id": "edge-q2-dsf",
+      "from": "q-geometry",
+      "to": "dsf",
+      "rel": "时序状态估计",
+      "kind": "support"
+    },
+    {
+      "id": "edge-q3-evi",
+      "from": "q-dynamics",
+      "to": "evireward",
+      "rel": "可信重建 / 奖励证据",
+      "kind": "motivation"
+    },
+    {
+      "id": "edge-q3-dsf",
+      "from": "q-dynamics",
+      "to": "dsf",
+      "rel": "动态更新的可验证性（待研究）",
+      "kind": "reference"
+    },
+    {
+      "id": "edge-q1-ravel",
+      "from": "q-recovery",
+      "to": "ravel",
+      "rel": "基础模型层级可恢复性",
+      "kind": "motivation"
+    },
+    {
+      "id": "edge-q6-ravel",
+      "from": "q-foundation",
+      "to": "ravel",
+      "rel": "表征发现用于下游（待验证）",
+      "kind": "motivation"
+    },
+    {
+      "id": "edge-q6-taper",
+      "from": "q-foundation",
+      "to": "taper",
+      "rel": "任务表征一致性",
+      "kind": "motivation"
+    },
+    {
+      "id": "edge-q5-benchmark",
+      "from": "q-utility",
+      "to": "benchmark",
+      "rel": "联合评估发现后续任务研究问题",
+      "kind": "support"
+    },
+    {
+      "id": "edge-q3-q5",
+      "from": "q-dynamics",
+      "to": "q-utility",
+      "rel": "可信度可能影响解码",
+      "kind": "bridge"
+    },
+    {
+      "id": "dim-a-to-b",
+      "from": "dim-fidelity",
+      "to": "dim-decision",
+      "rel": "研究推进：信号保真 → 重建决策",
+      "kind": "progression"
+    },
+    {
+      "id": "dim-b-to-c",
+      "from": "dim-decision",
+      "to": "dim-utility",
+      "rel": "研究推进：Benchmark发现问题 → 任务有效方法",
+      "kind": "progression"
+    },
+    {
+      "id": "decision-q4",
+      "from": "dim-decision",
+      "to": "q-choice",
+      "rel": "重建决策条件",
+      "kind": "hierarchy"
+    },
+    {
+      "id": "utility-q5",
+      "from": "dim-utility",
+      "to": "q-utility",
+      "rel": "保真与任务关系",
+      "kind": "hierarchy"
+    },
+    {
+      "id": "utility-q6",
+      "from": "dim-utility",
+      "to": "q-foundation",
+      "rel": "任务相关信息保持",
+      "kind": "hierarchy"
+    },
+    {
+      "id": "bridge-benchmark-to-utility",
+      "from": "benchmark",
+      "to": "dim-utility",
+      "rel": "Benchmark 发现为任务导向方法提供研究动机",
+      "kind": "progression"
+    }
+  ],
+  "ideas": [],
+  "papers": [],
+  "protocol": [
+    {
+      "id": "p1",
+      "group": "信号保真",
+      "title": "统一 NMSE / PCC / SNR / 频域 MAE / 空间拓扑指标",
+      "done": false
+    },
+    {
+      "id": "p2",
+      "group": "下游任务",
+      "title": "Emotion / MI / SSVEP + 任务级收益与置信区间",
+      "done": false
+    },
+    {
+      "id": "p3",
+      "group": "表征有效性",
+      "title": "冻结解码器 vs 等预算重新训练：区分可用信息和分布适应",
+      "done": false
+    },
+    {
+      "id": "p4",
+      "group": "鲁棒泛化",
+      "title": "不同缺失率、缺失模式、未见电极及跨被试/数据集",
+      "done": false
+    },
+    {
+      "id": "p5",
+      "group": "实际成本",
+      "title": "训练/推理时间、参数、GFLOPs、延迟及性能收益",
+      "done": false
+    }
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "text": "统一被试划分，防止训练测试泄漏",
+      "done": false
+    },
+    {
+      "id": "c2",
+      "text": "固定电极位置与缺失掩码生成协议",
+      "done": false
+    },
+    {
+      "id": "c3",
+      "text": "统一预处理、采样率和时间窗",
+      "done": false
+    },
+    {
+      "id": "c4",
+      "text": "明确预训练和额外标注数据的使用权限",
+      "done": false
+    },
+    {
+      "id": "c5",
+      "text": "比较相同预算下的下游解码器",
+      "done": false
+    },
+    {
+      "id": "c6",
+      "text": "进行多随机种子及统计显著性分析",
+      "done": false
+    }
+  ],
+  "meta": {
+    "graphPriority": "six-research-questions",
+    "relatedWorkLevel": "method-family",
+    "generated": "2026-10-14",
+    "notes": "科学问题驱动的可编辑关系图。外部论文为方法谱系代表，不代表原论文的直接引用链。",
+    "evidenceLocation": "benchmark-detail-only"
+  }
+};
+
+</script>
+  <script>
+(()=>{
+'use strict';
+const STORAGE='eeg-research-atlas-v3';
+const TYPE={dimension:{name:'研究层面',color:'#447f8c',shape:'box'},method:{name:'技术谱系',color:'#ac9063',shape:'box'},work:{name:'我的研究',color:'#258a92',shape:'dot'},benchmark:{name:'Benchmark（研究工具）',color:'#d7a044',shape:'dot'},future:{name:'未来方向',color:'#a17abc',shape:'diamond'},external:{name:'外部论文',color:'#738ca7',shape:'dot'},question:{name:'核心科学问题',color:'#cd6772',shape:'hexagon'},topic:{name:'领域与基线',color:'#607b88',shape:'box'}};
+const CONT=['Problem','Method','Mechanism','Theory','Benchmark','System'];
+const NARR=['Root Cause','Counter-intuitive','Theory','New Evaluation','Real-world','Unification','Efficiency','Generalization','New Phenomenon'];
+const NARR_ZH=['根因诊断','反直觉重构','理论照亮经验','新评价/基准','现实价值','极简统一','效率/可扩展','泛化/鲁棒性','新现象'];
+const LAYERS=[
+ {id:'dim-fidelity',code:'A',title:'Signal Fidelity',zh:'信号保真',tone:'fidelity',role:'阶段 A · 重建能力',desc:'先让空间重建更真实、更可靠：信息可恢复、时空泛化、结果可信。',qs:[{id:'q-recovery',works:['srgdiff','cafe','zuna']},{id:'q-geometry',works:['etno','scalpinr','dsf']},{id:'q-dynamics',works:['evireward']}]},
+ {id:'dim-decision',code:'B',title:'Reconstruction Decision',zh:'重建决策',tone:'decision',role:'阶段 B · 承上启下',desc:'通过 Benchmark 比较直接解码、插值与超分，回答何时值得重建，并寻找保真指标难以解释的任务问题。',qs:[{id:'q-choice',works:['benchmark','adaptive','interpolation']}]},
+ {id:'dim-utility',code:'C',title:'Task Utility',zh:'任务有效性',tone:'utility',role:'阶段 C · 任务导向方法',desc:'沿着 Benchmark 发现的问题，研究重建怎样真正服务下游解码，并保留任务相关信息。',qs:[{id:'q-utility',works:['imac','benchmark']},{id:'q-foundation',works:['ravel','taper']}]}
+];
+const CORE_IDS=new Set([...LAYERS.map(x=>x.id),...LAYERS.flatMap(x=>x.qs.map(q=>q.id))]);
+const HEADINGS={graph:['RESEARCH STRUCTURE / 01','从信号保真，到重建决策，再到任务有效','研究主线：A · Fidelity → B · Decision（Benchmark）→ C · Utility；科学问题保持跨层关联。','科学问题层级'],roadmap:['RESEARCH LOGIC / 02','A 信号保真 → B 重建决策 → C 任务有效性','Benchmark 位于中间，连接已有空间重建方法与后续任务导向研究。','研究逻辑'],narrative:['PAPER NARRATIVE / 03','论文贡献 × 叙事角度','六类贡献、九类叙事；科研逻辑结构与论文写作策略相互独立。','叙事矩阵'],ideas:['IDEA INBOX / 04','先记录灵感，再决定关联到哪个研究层面','新想法先放入收件箱，整理后可与多个科学问题建立联系。','灵感收件箱']};
+let state;let view='graph',graphMode='hierarchy',typeEnabled={};let network=null;let graphNodes=null,graphEdges=null;let activeId=null;let toastTimer=null;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const attr=esc;
+const copy=o=>JSON.parse(JSON.stringify(o));
+const nowISO=()=>new Date().toISOString().slice(0,10);
+function upgradeExisting(o){
+ // V6 migration: preserve user's paper nodes, notes, links, ideas and progress, but update the
+ // predefined scientific ontology and remove the no-longer-wanted overarching question node.
+ if((o.schemaVersion||0)>=6)return o;
+ const seed=window.ATLAS_SEED;
+ const byId=new Map(o.nodes.map(n=>[n.id,n]));
+ // Detect and retain genuinely custom node attributes while normalizing the six built-in questions.
+ const ontology=new Set(['dim-fidelity','dim-decision','dim-utility','q-recovery','q-geometry','q-dynamics','q-choice','q-utility','q-foundation']);
+ seed.nodes.filter(n=>ontology.has(n.id)).forEach(def=>{
+   const present=byId.get(def.id);
+   if(!present){o.nodes.push(copy(def));byId.set(def.id,o.nodes[o.nodes.length-1]);return}
+   // Only canonical structural attributes; preserve custom notes on questions.
+   Object.assign(present,{label:def.label,shortLabel:def.shortLabel,domain:def.domain});
+   if(def.type==='dimension')Object.assign(present,{description:def.description,status:def.status});
+ });
+ o.nodes=o.nodes.filter(n=>n.id!=='q-overarching');
+ const rem=new Set(['root-fidelity','root-utility','root-decision','utility-q4','utility-q5','decision-q6','edge-goal-a-c','edge-goal-b-c','edge-goal-a-b','edge-q1-q4','edge-q3-q4','edge-q4-benchmark','edge-q5-ravel','edge-q5-taper']);
+ o.edges=o.edges.filter(e=>!rem.has(e.id)&&e.from!=='q-overarching'&&e.to!=='q-overarching');
+ const known=new Set(o.edges.map(e=>e.id));const current=new Set(o.nodes.map(n=>n.id));
+ seed.edges.forEach(e=>{if(!known.has(e.id)&&current.has(e.from)&&current.has(e.to)){o.edges.push(copy(e));known.add(e.id)}});
+ o.nodes.forEach(n=>{if(n.id==='benchmark')n.stage=2;if(n.id==='ravel'||n.id==='taper')n.stage=3});
+ o.layouts=o.layouts||{};o.layouts.all=o.layouts.all||copy(o.layout||{});
+ // New sequence gets a fresh fixed default without damaging free-network custom positions.
+ delete o.layouts.hierarchy;
+ o.schemaVersion=6;return o;
+}
+function load(){
+ const fresh=copy(window.ATLAS_SEED);
+ try{const raw=localStorage.getItem(STORAGE);if(raw){const o=JSON.parse(raw);if(validate(o)){o.layout=o.layout||{};const out=upgradeExisting(o);try{localStorage.setItem(STORAGE,JSON.stringify(out))}catch(e){}return out}}}catch(e){console.warn(e)}
+ try{const raw=localStorage.getItem('eeg-research-atlas-v1');if(raw){const old=JSON.parse(raw);if(validate(old)){
+    const ids=new Set(fresh.nodes.map(n=>n.id));const retired=new Set(['q-core','q-fidelity','q-when','q-overarching']);
+    old.nodes.forEach(n=>{if(!ids.has(n.id)&&!retired.has(n.id)){fresh.nodes.push(n);ids.add(n.id)}});
+    const relations=new Set(fresh.edges.map(e=>[e.from,e.to,e.rel].join('|')));
+    old.edges.forEach(e=>{const key=[e.from,e.to,e.rel].join('|');if(ids.has(e.from)&&ids.has(e.to)&&!relations.has(key)){fresh.edges.push(e);relations.add(key)}});
+    fresh.ideas=old.ideas||[];fresh.papers=old.papers||[];
+    for(const p of (fresh.protocol||[])){let x=(old.protocol||[]).find(v=>v.id===p.id);if(x)p.done=!!x.done}
+    for(const p of (fresh.checks||[])){let x=(old.checks||[]).find(v=>v.id===p.id);if(x)p.done=!!x.done}
+    try{localStorage.setItem(STORAGE,JSON.stringify(fresh))}catch(e){}
+    fresh.schemaVersion=6;return fresh;
+ }}}catch(e){console.warn(e)}
+ fresh.layout={};fresh.layouts={};fresh.schemaVersion=6;return fresh
+}
+function validate(o){return o&&Array.isArray(o.nodes)&&Array.isArray(o.edges)&&Array.isArray(o.ideas)&&Array.isArray(o.papers)&&Array.isArray(o.protocol)&&Array.isArray(o.checks)&&o.nodes.every(n=>typeof n.id==='string'&&typeof n.label==='string')&&o.edges.every(e=>typeof e.from==='string'&&typeof e.to==='string')}
+function save(){try{localStorage.setItem(STORAGE,JSON.stringify(state))}catch(e){toast('浏览器禁止本地保存，请及时导出 JSON 备份')}}
+function toast(s){const t=$('toast');t.textContent=s;t.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.hidden=true,3400)}
+function uid(prefix){return prefix+'-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8)}
+function node(id){return state.nodes.find(n=>n.id===id)}
+function flagTag(s){return /待核实|草稿|构思|规划|候选|待验证|开放问题/.test(s||'')?'orange':''}
+function isMy(n){return ['work','benchmark','future','question'].includes(n.type)}
+function renderCounters(){let counts={};Object.keys(TYPE).forEach(k=>counts[k]=state.nodes.filter(n=>n.type===k).length);$('typeFilters').innerHTML=Object.entries(TYPE).map(([k,v])=>`<button class="filter-row ${typeEnabled[k]===false?'off':''}" data-type="${k}"><span class="filter-dot" style="background:${v.color}"></span>${v.name}<span class="filter-count">${counts[k]}</span></button>`).join('');$('ideaCount').textContent=state.ideas.length;$('ideasBadge').textContent=state.ideas.length;$('headingStats').innerHTML=[['核心问题',counts.question],['研究层面',counts.dimension],['研究关联',state.edges.length]].map(v=>`<div class="stat"><b>${v[1]}</b><small>${v[0]}</small></div>`).join('')}
+function switchView(to){if(!HEADINGS[to])return;view=to;document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===to));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===to+'View'));const h=HEADINGS[to];$('viewEyebrow').textContent=h[0];$('viewTitle').textContent=h[1];$('viewSubtitle').textContent=h[2];$('viewBreadcrumb').textContent=h[3];renderCounters();if(to==='graph')setTimeout(()=>renderGraph(),60);if(to==='roadmap')renderRoadmap();if(to==='narrative')renderMatrix();if(to==='ideas')renderIdeas();}
+function filterNodes(){return state.nodes.filter(n=>{
+ if(typeEnabled[n.type]===false)return false;
+ if(graphMode==='all')return true;
+ if(graphMode==='hierarchy')return CORE_IDS.has(n.id)||['work','future','benchmark'].includes(n.type);
+ if(graphMode==='lineage')return ['dimension','question','work','future','benchmark','method','external'].includes(n.type);
+ if(graphMode==='decoder')return n.id==='dim-utility'||n.id==='dim-decision'||n.id==='dim-fidelity'||n.id==='decoder'||n.id==='imac'||n.id==='taper'||n.id==='ravel'||n.id==='evireward'||n.id==='q-utility'||n.id==='q-foundation'||n.id==='m-decoder'||n.id==='m-foundation'||['ref-eegnet','ref-conformer','ref-labram','ref-bendr','arena','fmbench'].includes(n.id)||(n.type==='external'&&state.edges.some(e=>(e.from===n.id&&e.to==='decoder')||(e.to===n.id&&e.from==='decoder')));
+ return true;
+})}
+// Coordinates centered around 0,0 (stored by mode so editing one layout never scrambles another).
+const HIERARCHY={
+ 'dim-fidelity':[-1150,-410], 'dim-decision':[0,-410], 'dim-utility':[1100,-410],
+ 'q-recovery':[-1510,-150],'q-geometry':[-1130,-150],'q-dynamics':[-750,-150],
+ 'q-choice':[0,-150],'q-utility':[850,-150],'q-foundation':[1360,-150],
+ 'srgdiff':[-1660,120],'cafe':[-1420,145],
+ 'etno':[-1230,150],'scalpinr':[-1075,205],'dsf':[-895,145],
+ 'evireward':[-700,150],
+ 'benchmark':[0,165],'adaptive':[-230,315],
+ 'imac':[720,160], 'ravel':[1230,205], 'taper':[1490,185]
+};
+const NETWORK_SPOTS={
+ 'dim-fidelity':[-770,-440],'dim-decision':[30,-440],'dim-utility':[750,-440],
+ 'q-recovery':[-960,-190],'q-geometry':[-630,-180],'q-dynamics':[-360,-180],
+ 'q-choice':[10,-180],'q-utility':[570,-170],'q-foundation':[960,-165],
+ 'srgdiff':[-1030,45],'cafe':[-940,205],'etno':[-620,20],'scalpinr':[-510,180],'dsf':[-375,260],
+ 'evireward':[-285,385],'imac':[530,100],'ravel':[1000,160],'taper':[1050,345],
+ 'benchmark':[30,105],'adaptive':[-35,330],'decoder':[675,540],'interpolation':[-75,550],
+ 'm-diffusion':[-1340,-15],'m-autoregressive':[-1330,220],'m-neural-operator':[-670,-565],
+ 'm-inr':[-440,-565],'m-state':[-620,435],'m-domain':[520,-340],
+ 'm-foundation':[1225,300],'m-decoder':[915,720],'m-interpolation':[-300,630],
+ 'zuna':[-1030,500],'arena':[820,920],'fmbench':[1010,885],'fmreview':[1300,655],
+ 'ref-ddpm':[-1560,-210],'ref-score':[-1530,70],'ref-wavenet':[-1525,160],
+ 'ref-pixelcnn':[-1455,345],'ref-siren':[-345,-750],'ref-fno':[-735,-755],
+ 'ref-mamba':[-815,520],'ref-dann':[560,-580],'ref-eegnet':[1210,850],
+ 'ref-labram':[1480,445],'ref-bendr':[1420,660],'ref-conformer':[1270,980]
+};
+function modePositions(){return graphMode==='hierarchy'?(state.layouts?.hierarchy||{}):(state.layouts?.[graphMode]||state.layouts?.all||state.layout||{})}
+function basePosition(n){
+ const stored=modePositions()[n.id];if(stored&&Number.isFinite(stored.x)&&Number.isFinite(stored.y))return stored;
+ const positions=graphMode==='hierarchy'?HIERARCHY:NETWORK_SPOTS;
+ if(positions[n.id])return{x:positions[n.id][0],y:positions[n.id][1]};
+ const rel=state.edges.find(e=>e.from===n.id||e.to===n.id);
+ const anchor=rel&&positions[rel.from===n.id?rel.to:rel.from];
+ let hash=[...n.id].reduce((a,c)=>a*31+c.charCodeAt(0),7)>>>0,theta=(hash%360)*Math.PI/180;
+ return{x:(anchor?anchor[0]:0)+185*Math.cos(theta),y:(anchor?anchor[1]:0)+185*Math.sin(theta)};
+}
+function savePositions(positions){state.layouts=state.layouts||{};state.layouts[graphMode]={...(state.layouts[graphMode]||{}),...positions};save()}
+const DOMAIN_COLOR={fidelity:'#228a91',utility:'#8775b9',decision:'#ca9350'};
+function colorFor(n){return n.type==='dimension'?DOMAIN_COLOR[n.domain]:n.type==='question'?(DOMAIN_COLOR[n.domain]||TYPE.question.color):(TYPE[n.type]||TYPE.topic).color}
+function visItem(n){const t=TYPE[n.type]||TYPE.topic;
+ const sz=n.type==='root'?42:n.type==='dimension'?36:n.type==='question'?29:n.type==='work'?21:n.type==='future'?20:n.type==='method'?20:n.type==='benchmark'?20:n.type==='external'?13:17;
+ const col=colorFor(n),pos=basePosition(n),isAnchor=['root','dimension','question'].includes(n.type);
+ return{id:n.id,label:n.shortLabel||n.label,shape:t.shape,size:sz,x:pos.x,y:pos.y,
+ borderWidth:n.type==='root'?3.5:isAnchor?2.5:1.5,
+ margin:n.type==='root'?{top:17,bottom:17,left:18,right:18}:n.type==='dimension'?{top:14,bottom:14,left:16,right:16}:8,
+ color:{background:col,border:n.type==='root'?'#0e2b3b':isAnchor?'#ffffff':'#ffffff',highlight:{background:col,border:'#163c50'}},
+ font:{color:n.type==='root'||n.type==='dimension'?'#fff':'#294857',face:'Arial',size:n.type==='root'?18:n.type==='dimension'?17:n.type==='question'?15:n.type==='external'?11:13,bold:isAnchor?'bold':undefined,strokeWidth:isAnchor?0:3,strokeColor:'#ffffff'},
+ mass:isAnchor?5:1,shadow:{enabled:true,color:'#173c4c18',size:5,x:0,y:2},title:`${n.label}\n${n.status||''}\n${n.description||''}`};
+}
+function visEdge(e,i){const k=e.kind||'reference',core=['root','dimension','question'].includes(node(e.from)?.type);
+ const isHier=k==='hierarchy',special=['dependency','bridge','progression'].includes(k);
+ return{id:e.id||i,from:e.from,to:e.to,
+ label:graphMode==='hierarchy'?(k==='progression'?'研究推进':isHier?'':(k==='dependency'?'综合依据':k==='bridge'?'关联':'')):'',
+ title:e.rel||'相关研究',dashes:['motivation','reference','dependency','bridge'].includes(k),
+ arrows:{to:{enabled:k!=='bridge',scaleFactor:.48}},
+ color:{color:isHier?'#6f9eb0':k==='progression'?'#23989a':k==='dependency'?'#c99458':k==='bridge'?'#ad82ad':k==='method'?'#c19a57':k==='motivation'?'#d3a9aa':k==='reference'?'#b9c6d0':'#87b6b7',opacity:isHier?.85:k==='reference'?.45:special?.6:.65,highlight:'#1a9492'},
+ font:{size:9,color:'#8d9faa',strokeWidth:3,strokeColor:'#fff',align:'middle'},width:k==='progression'?3.3:isHier?2.3:k==='method'?2.1:k==='support'?1.7:1.15,
+ smooth:{type:'continuous'},selectionWidth:1.7};
+}
+function renderGraph(){if(view!=='graph')return;let visible=filterNodes(),ids=new Set(visible.map(n=>n.id));let es=state.edges.filter(e=>ids.has(e.from)&&ids.has(e.to)&&!(graphMode==='hierarchy'&&e.kind==='reference'));$('graphLegend').innerHTML=Object.entries(TYPE).map(([k,v])=>`<span class="legend-row"><i class="filter-dot" style="background:${v.color}"></i>${v.name}</span>`).join('');
+ if(!window.vis||!window.vis.Network){if(network){network.destroy();network=null}$('network').style.display='none';$('networkFallback').hidden=false;renderSvgFallback(visible,es);return;}
+ $('networkFallback').hidden=true;$('networkFallback').replaceChildren();$('network').style.display='block';const ns=visible.map(visItem),ee=es.map(visEdge);if(network){network.destroy();network=null}graphNodes=new vis.DataSet(ns);graphEdges=new vis.DataSet(ee);
+ network=new vis.Network($('network'),{nodes:graphNodes,edges:graphEdges},{interaction:{hover:true,tooltipDelay:120,zoomView:true,dragView:true,navigationButtons:false},layout:{randomSeed:9,improvedLayout:true},physics:{enabled:false},edges:{smooth:{enabled:true,type:'continuous'}},nodes:{chosen:{node:true,label:true}}});
+ network.on('click',e=>{if(e.nodes[0])openDetail(e.nodes[0])});network.on('doubleClick',e=>{if(e.nodes[0])network.focus(e.nodes[0],{scale:1.18,animation:{duration:400}})});
+ network.on('dragEnd',e=>{if(e.nodes?.length){const current=network.getPositions(e.nodes);savePositions(current)}});
+ setTimeout(()=>network?.fit({animation:false}),70)
+}
+function renderSvgFallback(visible,relations){
+  // An original SVG viewer for offline operation when the vis-network CDN is unavailable.
+  // Drag nodes, zoom with the mouse wheel, pan by dragging empty space, click to open a detail panel.
+  const host=$('networkFallback');host.innerHTML='';const xmlns='http://www.w3.org/2000/svg';
+  const el=(tag,attrs={},txt)=>{const x=document.createElementNS(xmlns,tag);Object.entries(attrs).forEach(([k,v])=>x.setAttribute(k,String(v)));if(txt!==undefined)x.textContent=String(txt);return x};
+  const svg=el('svg',{viewBox:'0 0 1260 760',preserveAspectRatio:'xMidYMid meet',width:'100%',height:'100%',style:'display:block;touch-action:none;user-select:none;cursor:grab'});
+  const defs=el('defs'),marker=el('marker',{id:'atlasArrow',markerWidth:8,markerHeight:8,refX:6,refY:3.4,orient:'auto'});marker.append(el('path',{d:'M0 0 L7 3.4 L0 6.8 z',fill:'#b3c4cc'}));defs.append(marker);svg.append(defs);
+  const edgeLayer=el('g'),nodeLayer=el('g');svg.append(edgeLayer,nodeLayer);host.append(svg);
+  const loc={};visible.forEach(n=>{const p=basePosition(n);loc[n.id]={x:p.x+630,y:p.y+780}});
+  const lines=[];relations.forEach(e=>{const a=loc[e.from],b=loc[e.to];if(!a||!b)return;const line=el('line',{x1:a.x,y1:a.y,x2:b.x,y2:b.y,stroke:e.kind==='progression'?'#159a91':e.kind==='hierarchy'?'#6b9db0':e.kind==='dependency'?'#c9955b':e.kind==='bridge'?'#a888b3':e.kind==='motivation'?'#dcb0b1':'#abc0c9','stroke-width':e.kind==='progression'?3.6:e.kind==='hierarchy'?2.1:e.kind==='baseline'?2:1.35,'stroke-dasharray':['motivation','reference','dependency','bridge'].includes(e.kind)?'5 5':'none',opacity:.68,'marker-end':'url(#atlasArrow)'});edgeLayer.append(line);lines.push({line,a:e.from,b:e.to})});
+  const labels=new Map();visible.forEach(n=>{const p=loc[n.id],g=el('g',{'data-id':n.id,style:'cursor:grab'});const color=colorFor(n);let radius=n.type==='root'?51:n.type==='dimension'?39:n.type==='question'?31:n.type==='work'?24:n.type==='benchmark'?19:n.type==='method'?22:n.type==='external'?16:21;
+    g.append(el('circle',{cx:p.x,cy:p.y,r:radius+6,fill:color,opacity:.09}));g.append(el('circle',{cx:p.x,cy:p.y,r:radius,fill:color,stroke:'#ffffff','stroke-width':3}));
+    const ch=n.type==='root'?'◎':n.type==='dimension'?n.id==='dim-fidelity'?'A':n.id==='dim-decision'?'B':'C':n.type==='question'?'?':n.type==='benchmark'?'◈':n.type==='method'?'M':n.type==='external'?'◇':n.type==='future'?'✧':n.type==='topic'?'◆':'●';g.append(el('text',{x:p.x,y:p.y+5,'text-anchor':'middle','font-family':'system-ui','font-size':n.type==='root'?24:n.type==='dimension'?20:n.type==='question'?18:15,'font-weight':700,fill:'#ffffff'},ch));
+    const lab=n.shortLabel||n.label;const short=lab.length>31?lab.slice(0,29)+'…':lab;g.append(el('text',{x:p.x,y:p.y+radius+22,'text-anchor':'middle','font-family':'PingFang SC,Arial,sans-serif','font-size':n.type==='root'?20:n.type==='dimension'?18:n.type==='question'?15:13,'font-weight':['root','dimension','question'].includes(n.type)?800:650,fill:'#234b5a','paint-order':'stroke',stroke:'#fff','stroke-width':4,'stroke-linejoin':'round'},short));
+    nodeLayer.append(g);labels.set(n.id,g);
+  });
+  function move(id,x,y){const p=loc[id],dx=x-p.x,dy=y-p.y;p.x=x;p.y=y;const g=labels.get(id);if(g)g.setAttribute('transform',`translate(${dx+Number(g.dataset.dx||0)},${dy+Number(g.dataset.dy||0)})`),g.dataset.dx=String(dx+Number(g.dataset.dx||0)),g.dataset.dy=String(dy+Number(g.dataset.dy||0));lines.forEach(e=>{if(e.a===id){e.line.setAttribute('x1',x);e.line.setAttribute('y1',y)}if(e.b===id){e.line.setAttribute('x2',x);e.line.setAttribute('y2',y)}})}
+  function point(evt){let pp=svg.createSVGPoint();pp.x=evt.clientX;pp.y=evt.clientY;const m=svg.getScreenCTM();return m?pp.matrixTransform(m.inverse()):{x:0,y:0}}
+  let pan=null, drag=null, moved=false;svg.addEventListener('pointerdown',e=>{const g=e.target.closest('[data-id]');const p=point(e);moved=false;if(g){const id=g.getAttribute('data-id');drag={id,ox:loc[id].x-p.x,oy:loc[id].y-p.y};g.style.cursor='grabbing'}else{const b=svg.viewBox.baseVal;pan={sx:p.x,sy:p.y,x:b.x,y:b.y}}svg.setPointerCapture(e.pointerId)});
+  svg.addEventListener('pointermove',e=>{const p=point(e);if(drag){let x=p.x+drag.ox,y=p.y+drag.oy;if(Math.abs(x-loc[drag.id].x)>1||Math.abs(y-loc[drag.id].y)>1)moved=true;move(drag.id,x,y)}else if(pan){let vb=svg.viewBox.baseVal;vb.x+=pan.sx-p.x;vb.y+=pan.sy-p.y;moved=true}});
+  svg.addEventListener('pointerup',e=>{const id=drag?.id;if(id&&labels.get(id))labels.get(id).style.cursor='grab';if(id&&!moved)openDetail(id);else if(id&&moved){savePositions({[id]:{x:loc[id].x-630,y:loc[id].y-780}})}drag=null;pan=null});
+  svg.addEventListener('wheel',e=>{e.preventDefault();const vb=svg.viewBox.baseVal,p=point(e),factor=e.deltaY>0?1.13:.88,newW=Math.min(2500,Math.max(390,vb.width*factor)),newH=newW*(760/1260),rx=(p.x-vb.x)/vb.width,ry=(p.y-vb.y)/vb.height;vb.x=p.x-rx*newW;vb.y=p.y-ry*newH;vb.width=newW;vb.height=newH},{passive:false});
+  function fitSvg(){const ps=Object.values(loc);if(!ps.length)return;const xs=ps.map(p=>p.x),ys=ps.map(p=>p.y),pad=115;const x=Math.min(...xs)-pad,y=Math.min(...ys)-pad,w=Math.max(700,Math.max(...xs)-Math.min(...xs)+pad*2),h=Math.max(500,Math.max(...ys)-Math.min(...ys)+pad*2);svg.setAttribute('viewBox',`${x} ${y} ${w} ${h}`)}
+  function focusSvg(id){const on=new Set([id]);relations.forEach(e=>{if(e.from===id)on.add(e.to);if(e.to===id)on.add(e.from)});labels.forEach((g,key)=>{g.style.opacity=id?(on.has(key)?'1':'.24'):'1'});lines.forEach(e=>{e.line.style.opacity=id?(e.a===id||e.b===id?'1':'.12'):'.68';e.line.setAttribute('stroke-width',id&&(e.a===id||e.b===id)?'2.8':'1.35')})}
+  let isAnimating=false;
+  function relayoutSvg(){if(isAnimating)return;isAnimating=true;let tick=0;const keys=Object.keys(loc);const adj=relations.map(e=>[e.from,e.to,e.kind]);
+   function step(){for(const aId of keys){const a=loc[aId];let dx=0,dy=0;for(const bId of keys){if(bId===aId)continue;const b=loc[bId],vx=a.x-b.x,vy=a.y-b.y,d2=Math.max(900,vx*vx+vy*vy);const force=8500/d2;dx+=vx/(Math.sqrt(d2))*force;dy+=vy/(Math.sqrt(d2))*force}
+     for(const [from,to] of adj){if(from!==aId&&to!==aId)continue;const b=loc[from===aId?to:from];if(!b)continue;const vx=b.x-a.x,vy=b.y-a.y,d=Math.max(10,Math.hypot(vx,vy));const target=from===aId?145:170;dx+=(d-target)*vx/d*.011;dy+=(d-target)*vy/d*.011}
+     const nodeType=visible.find(n=>n.id===aId)?.type;const isAnchor=['root','dimension','question'].includes(nodeType);const ease=isAnchor?.10:.55;const base=basePosition(visible.find(n=>n.id===aId));if(isAnchor){dx+=(base.x+630-a.x)*.12;dy+=(base.y+780-a.y)*.12}a.fx=Math.max(-15,Math.min(15,dx*ease));a.fy=Math.max(-15,Math.min(15,dy*ease))}
+    keys.forEach(id=>{let x=loc[id];move(id,x.x+x.fx,x.y+x.fy)});tick++;if(tick<85){requestAnimationFrame(step)}else{isAnimating=false;fitSvg();const positions={};keys.forEach(id=>{positions[id]={x:loc[id].x-630,y:loc[id].y-780}});savePositions(positions)}}
+   requestAnimationFrame(step)
+  }
+  window.atlasSvgControls={fit:fitSvg,relayout:relayoutSvg,focus:focusSvg};
+  fitSvg();host.dataset.svgFallback='true';
+}
+function renderRoadmap(){
+ const pick=id=>node(id);
+ const branches=LAYERS.map(layer=>`<section class="logic-branch ${layer.tone}">
+ <button class="logic-branch-head" data-node="${attr(layer.id)}"><span class="logic-badge">${layer.code}</span><div><small>${esc(layer.role)} · ${esc(layer.title)}</small><h3>${esc(layer.zh)}</h3><p>${esc(layer.desc)}</p></div><strong>查看阶段 ↗</strong></button>
+ <div class="logic-questions">${layer.qs.map(q=>{const question=pick(q.id);return `<article class="logic-question"><button class="logic-question-head" data-node="${attr(q.id)}"><b>${esc(question?.shortLabel||question?.label||q.id)}</b><span>↗</span></button><p>${esc(question?.question||'')}</p><div class="logic-paper-row">${q.works.map(id=>pick(id)).filter(Boolean).map(w=>`<button class="logic-paper" data-node="${attr(w.id)}"><b>${esc(w.label)}</b><small>${esc(w.status||'')}</small></button>`).join('')}</div></article>`}).join('')}</div></section>`);
+ $('roadmapBoard').innerHTML=`<div class="research-story-title"><span>RESEARCH STORY</span><strong>从更真实的空间重建，到何时值得重建，再到对解码真正有用</strong><p>这是一条研究推进路线，而非三项任务必须依次完成的因果定律；论文仍可跨阶段连接。</p></div>
+ <div class="logic-sequence">${branches[0]}<div class="logic-transition"><span>→</span><b>从更好的重建结果<br>转向重新评价重建价值</b></div>${branches[1]}<div class="logic-transition"><span>→</span><b>Benchmark 的发现<br>引出任务有效方法</b></div>${branches[2]}</div>
+ <div class="logic-footer">跨阶段关系：Benchmark 除研究方法选择，还比较下游任务表现；RAVEL 同时关联信号可恢复性和任务信息保持；IMAC 是任务导向研究的早期基础，不应被误认为 Benchmark 之后才发表。</div>`;
+}
+function renderMatrix(){const selected=state.nodes.filter(n=>['work','benchmark','future','external'].includes(n.type));let parts=['<div class="matrix"><div class="matrix-head">Narrative ↓ / Contribution →</div>',...CONT.map(c=>`<div class="matrix-head">${c}</div>`)];NARR.forEach((r,i)=>{parts.push(`<div class="matrix-side">${r}<br><span style="font-weight:400;font-size:9px;margin-left:5px">${NARR_ZH[i]}</span></div>`);CONT.forEach(c=>{const hits=selected.filter(n=>n.contribution===c&&n.narrative===r);parts.push(`<div class="matrix-cell">${hits.map(n=>`<button class="matrix-chip ${n.type==='future'?'future':n.type==='external'?'external':''}" data-node="${attr(n.id)}">${esc(n.label)}</button>`).join('')}</div>`)});});parts.push('</div>');$('narrativeMatrix').innerHTML=parts.join('')}
+function renderBenchmarkProgress(){if(!state.protocol)state.protocol=[];if(!state.checks)state.checks=[];return `<div class="benchmark-protocol"><div class="detail-heading">BENCHMARK ONLY · 评测方案</div><div class="detail-body">这部分只属于 Benchmark 论文，不作为独立网站模块；用于记录评价问题和对照设置。</div><div class="benchmark-paths"><p>四条公平对照路径</p><div>Sparse EEG → Decoder</div><div>Sparse EEG → Interpolation → Decoder</div><div>Sparse EEG → Learned SR → Decoder</div><div>Full EEG → Decoder（参考性能）</div></div><div class="benchmark-checklist"><strong>评价维度与进度</strong>${state.protocol.map(x=>`<label class="bench-task"><input type="checkbox" data-protocol="${attr(x.id)}" ${x.done?'checked':''}><span><b>${esc(x.group)}</b> ${esc(x.title)}</span></label>`).join('')}</div><div class="benchmark-checklist"><strong>公平性原则</strong>${state.checks.map(x=>`<label class="bench-task"><input type="checkbox" data-check="${attr(x.id)}" ${x.done?'checked':''}><span>${esc(x.text)}</span></label>`).join('')}</div></div>`}
+function nodeOptions(sel){return `<option value="">不关联 / 稍后再说</option>`+state.nodes.map(n=>`<option value="${attr(n.id)}" ${sel===n.id?'selected':''}>${esc(n.label)} · ${esc(TYPE[n.type]?.name||'节点')}</option>`).join('')}
+function renderIdeas(){$('ideaRelated').innerHTML=nodeOptions();$('ideaList').innerHTML=state.ideas.length?state.ideas.slice().reverse().map(x=>`<article class="inbox-item"><div class="item-head"><strong>${esc(x.title)}</strong><span class="tag orange">未进入主图</span></div><p>${esc(x.description||'（尚未记录详细背景）')}</p><div class="item-meta">${esc(x.date||'')} ${x.related&&node(x.related)?' · 可能关联：'+esc(node(x.related).label):''}</div><div class="item-controls"><button data-idea-promote="${attr(x.id)}">整理入图 ↗</button><button data-idea-edit="${attr(x.id)}">编辑想法</button><button class="negative" data-idea-delete="${attr(x.id)}">删除</button></div></article>`).join(''):`<div class="empty-state"><span>✧</span><h3>收件箱空空的</h3><p>想到一个新方向就记下来，不需要立刻定义完整研究问题。</p></div>`;renderCounters()}
+function captureIdea(pref={}){const title=$('ideaTitle').value.trim(),description=$('ideaDescription').value.trim(),related=$('ideaRelated').value;if(!title)return toast('请先写一句话想法');state.ideas.push({id:uid('idea'),title,description,related,date:nowISO()});save();$('ideaTitle').value='';$('ideaDescription').value='';renderIdeas();toast('已加入灵感收件箱，不会立即出现在主图')}
+function editIdea(id){const x=state.ideas.find(v=>v.id===id);if(!x)return;modal('编辑灵感',`<form id="ideaEditForm" class="modal-body"><label>一句话想法<input name="title" required value="${attr(x.title)}"></label><label>背景 / 假设<textarea name="description" rows="5">${esc(x.description)}</textarea></label><label>可能关联工作<select name="related">${nodeOptions(x.related)}</select></label><div class="modal-actions"><button type="button" class="btn ghost" data-close-modal>取消</button><button class="btn primary">保存修改</button></div></form>`);$('ideaEditForm').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);x.title=String(f.get('title')).trim();x.description=String(f.get('description')).trim();x.related=String(f.get('related'));save();closeModal();renderIdeas();toast('灵感已更新')}}
+function promoteIdea(id){const x=state.ideas.find(v=>v.id===id);if(!x)return;nodeEditor(null,{label:x.title,description:x.description,type:'future',status:'构思中',contribution:'Problem',narrative:'Root Cause',stage:3},(n)=>{if(x.related&&node(x.related))addEdge(x.related,n.id,'研究启发','motivation');state.ideas=state.ideas.filter(z=>z.id!==id);save();renderIdeas();toast('已升级为研究节点并建立关联');switchView('graph');setTimeout(()=>openDetail(n.id),250)})}
+function safeUrl(u){try{return ['http:','https:'].includes(new URL(u).protocol)}catch{return false}}
+// Purely local normalization: no lookup, crawling or remote metadata request.
+function canonicalPaperUrl(raw){
+ try{const u=new URL(raw.trim());u.hash='';
+   if(/(^|\.)arxiv\.org$/i.test(u.hostname)){let id=u.pathname.replace(/^\/(abs|pdf|html)\//,'').replace(/\.pdf$/i,'').replace(/\/$/,'');return 'arxiv:'+id.toLowerCase()}
+   if(u.hostname.toLowerCase()==='doi.org'||u.hostname.toLowerCase()==='dx.doi.org')return 'doi:'+decodeURIComponent(u.pathname).replace(/^\//,'').toLowerCase();
+   u.search='';return u.toString().replace(/\/$/,'').toLowerCase();
+ }catch{return raw.trim().toLowerCase()}
+}
+function guessedPaperTitle(raw){
+ try{const u=new URL(raw);let name=decodeURIComponent(u.pathname.split('/').filter(Boolean).pop()||'').replace(/\.pdf$/i,'');
+   if(/(^|\.)arxiv\.org$/i.test(u.hostname))return 'arXiv '+(name||'论文');
+   if(/(^|\.)doi\.org$/i.test(u.hostname))return 'DOI '+decodeURIComponent(u.pathname.replace(/^\//,''));
+   return name||u.hostname;
+ }catch{return '待补充论文标题'}
+}
+function manualPaperModal(pref={}){
+ const old=(state.papers||[]).filter(p=>p.status==='pending'&&!p.graphNodeId);
+ const oldBlock=old.length?`<details class="legacy-papers"><summary>旧版已收藏论文（${old.length} 篇）· 点击可填入</summary><div class="legacy-list">${old.map(p=>`<button type="button" data-old-paper="${attr(p.id)}">${esc(p.title||p.url||'未命名论文')}</button>`).join('')}</div></details>`:'';
+ modal('手动添加论文到知识图谱',`<form id="manualPaperForm" class="modal-body">
+ <div class="paper-modal-intro">粘贴你已经找到的论文链接，无需检索。<b>只填链接即可添加</b>；建议再指定一个研究问题或技术节点，让它进入研究网络。</div>
+ <label>论文 URL / arXiv / DOI *<input type="url" name="url" required placeholder="https://arxiv.org/abs/2601.12345" value="${attr(pref.url||'')}"></label>
+ <label>论文名称 <span class="optional-note">选填；不填写会用 arXiv 编号或网址路径暂时代替</span><input name="title" placeholder="例如：EEG Decoding via ..." value="${attr(pref.title||'')}"></label>
+ <div class="modal-grid"><label>发表日期（选填）<input type="date" name="date" value="${attr(pref.date||'')}"></label><label>标签（选填，逗号分隔）<input name="tags" placeholder="Diffusion, EEG Decoder" value="${attr((pref.tags||[]).join(', '))}"></label></div>
+ <label>它与哪项研究有关？<select name="related">${nodeOptions(pref.related||'')}</select></label>
+ <label>关联关系<select name="rel">${['属于这一技术路线','关联这一科学问题','相关领域工作','可借鉴的方法','可能存在创新重叠','下游解码相关','可作为评测基线'].map(x=>`<option ${pref.rel===x?'selected':''}>${esc(x)}</option>`).join('')}</select></label>
+ <label>一句话笔记（选填）<textarea name="notes" rows="3" placeholder="这篇论文在做什么？为什么需要关注？">${esc(pref.notes||'')}</textarea></label>
+ <div class="modal-grid"><label>主要贡献（可稍后修改）<select name="contribution"><option value="">尚未判断</option>${CONT.map(v=>`<option>${v}</option>`).join('')}</select></label><label>主要叙事（可稍后修改）<select name="narrative"><option value="">尚未判断</option>${NARR.map(v=>`<option>${v}</option>`).join('')}</select></label></div>
+ ${oldBlock}
+ <div class="modal-actions"><button type="button" class="btn ghost" data-close-modal>取消</button><button class="btn primary" type="submit">＋ 加入知识图谱</button></div>
+ </form>`);
+ $('manualPaperForm').onsubmit=e=>{
+   e.preventDefault();const f=new FormData(e.target);let url=String(f.get('url')||'').trim();
+   if(!safeUrl(url))return toast('请填写有效的 http/https 论文链接');
+   const key=canonicalPaperUrl(url);const existing=state.nodes.find(n=>n.url&&canonicalPaperUrl(n.url)===key);
+   if(existing){closeModal();switchView('graph');setTimeout(()=>{graphMode='all';syncGraphMode();renderGraph();openDetail(existing.id)},90);return toast('这篇论文已经在图谱中，已为你定位')}
+   const title=String(f.get('title')||'').trim()||guessedPaperTitle(url);
+   const p={id:uid('lit'),label:title,type:'external',status:'外部论文 · 待整理',url,date:String(f.get('date')||''),tags:String(f.get('tags')||'').split(/[,，]/).map(x=>x.trim()).filter(Boolean),description:String(f.get('notes')||'').trim()||'手动录入的相关论文；研究定位待补充。',contribution:String(f.get('contribution')||''),narrative:String(f.get('narrative')||''),question:'',stage:0,evidence:[]};
+   state.nodes.push(p);
+   let related=String(f.get('related')||'');if(related&&node(related))addEdge(p.id,related,String(f.get('rel')||'相关领域工作'),'reference');
+   // Preserve references from the previous manual collection without requiring the old radar UI.
+   (state.papers||[]).filter(x=>x.status==='pending'&&x.url&&canonicalPaperUrl(x.url)===key).forEach(x=>{x.status='added';x.graphNodeId=p.id});
+   save();closeModal();switchView('graph');graphMode='all';syncGraphMode();renderGraph();setTimeout(()=>openDetail(p.id),130);toast('论文已手动加入图谱，可继续完善内容与关系');
+ }
+}
+function syncGraphMode(){document.querySelectorAll('[data-graph-mode]').forEach(b=>b.classList.toggle('selected',b.dataset.graphMode===graphMode))}
+function addEdge(from,to,rel,kind){if(!node(from)||!node(to)||from===to)return false;const exists=state.edges.some(e=>e.from===from&&e.to===to&&e.rel===rel);if(exists)return false;state.edges.push({id:uid('edge'),from,to,rel,kind:kind||'reference'});return true}
+function modal(title,html){$('modalRoot').hidden=false;$('modalRoot').innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-label="${attr(title)}"><header class="modal-header"><h3>${esc(title)}</h3><button class="close-detail" data-close-modal>×</button></header>${html}</div>`}
+function closeModal(){$('modalRoot').hidden=true;$('modalRoot').innerHTML=''}
+function nodeEditor(existing,defaults={},afterSave=null){const n=existing||{id:uid('node'),label:'',type:'future',status:'构思中',contribution:'Problem',narrative:'Root Cause',description:'',question:'',method:'',evidence:[],url:'',stage:3,...defaults};modal(existing?'编辑节点':'新建研究节点',`<form id="nodeEditForm" class="modal-body"><label>节点名称 *<input name="label" required value="${attr(n.label)}" placeholder="例如：多任务空间重建的必要性"></label><div class="modal-grid"><label>节点类型<select name="type">${Object.entries(TYPE).map(([k,v])=>`<option value="${k}" ${n.type===k?'selected':''}>${v.name}</option>`).join('')}</select></label><label>状态<input name="status" value="${attr(n.status||'')}" placeholder="构思中 / 已发表 / 投稿中"></label></div><label>核心科学问题<input name="question" value="${attr(n.question||'')}" placeholder="这项研究要回答什么？"></label><label>研究介绍<textarea name="description" rows="3">${esc(n.description||'')}</textarea></label><label>方法 / 研究方案<input name="method" value="${attr(n.method||'')}"></label><div class="modal-grid"><label>主要贡献<select name="contribution">${CONT.map(v=>`<option ${n.contribution===v?'selected':''}>${v}</option>`).join('')}</select></label><label>主要叙事<select name="narrative">${NARR.map(v=>`<option ${n.narrative===v?'selected':''}>${v}</option>`).join('')}</select></label></div><div class="modal-grid"><label>论文 / 资料 URL<input name="url" value="${attr(n.url||'')}"></label><label>研究阶段<select name="stage">${['相关背景 / 领域节点','阶段 I · 重建方法','阶段 II · Benchmark','阶段 III · 任务有效性'].map((v,i)=>`<option value="${i}" ${Number(n.stage)===i?'selected':''}>${v}</option>`).join('')}</select></label></div><div class="modal-actions"><button type="button" class="btn ghost" data-close-modal>取消</button><button class="btn primary">${existing?'保存修改':'保存节点'}</button></div></form>`);$('nodeEditForm').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),label=String(f.get('label')).trim(),url=String(f.get('url')).trim();if(!label)return toast('请填写名称');if(url&&!safeUrl(url))return toast('资料 URL 必须是 http 或 https 地址');const updates={label,type:String(f.get('type')),status:String(f.get('status')).trim(),question:String(f.get('question')).trim(),description:String(f.get('description')).trim(),method:String(f.get('method')).trim(),contribution:String(f.get('contribution')),narrative:String(f.get('narrative')),url,stage:Number(f.get('stage'))};if(existing)Object.assign(existing,updates);else{Object.assign(n,updates);state.nodes.push(n)}save();closeModal();renderCounters();if(view==='graph')renderGraph();if(view==='roadmap')renderRoadmap();if(view==='narrative')renderMatrix();if(afterSave)afterSave(n);else openDetail(n.id);toast(existing?'节点已更新':'新节点已加入图谱')}}
+function linkEditor(start=null){modal('为两项研究建立关系',`<form id="linkForm" class="modal-body"><label>从哪个节点出发？<select name="from" required>${nodeOptions(start)}</select></label><label>连接到哪个节点？<select name="to" required>${nodeOptions('')}</select></label><label>关系描述<input name="rel" required placeholder="例如：作为 Benchmark 的外部基线 / 发现创新重叠"></label><label>关系类别<select name="kind"><option value="reference">相关参照（虚线）</option><option value="baseline">基线 / 技术关联（实线）</option><option value="motivation">启发研究问题（虚线）</option><option value="support">验证 / 支撑（实线）</option></select></label><div class="modal-actions"><button type="button" class="btn ghost" data-close-modal>取消</button><button class="btn primary">建立连接</button></div></form>`);$('linkForm').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);if(!f.get('from')||!f.get('to'))return toast('请选择两个节点');if(!addEdge(String(f.get('from')),String(f.get('to')),String(f.get('rel')).trim(),String(f.get('kind'))))return toast('连接失败：自连或相同关系已存在');save();closeModal();renderCounters();if(view==='graph')renderGraph();if(activeId)openDetail(activeId);toast('关系已建立')}}
+function openDetail(id){const n=node(id);if(!n)return;activeId=id;
+ const near=state.edges.filter(e=>e.from===id||e.to===id);
+ const tiers=state.edges.filter(e=>(e.from===id||e.to===id)&&['hierarchy','dependency','bridge','progression'].includes(e.kind));
+ const parentMethods=state.edges.filter(e=>e.to===id&&node(e.from)?.type==='method').map(e=>node(e.from));
+ const methodChain=parentMethods.map(m=>{let refs=state.edges.filter(e=>e.to===m.id&&node(e.from)?.type==='external').map(e=>node(e.from));return `<div class="lineage-family"><button class="lineage-hub" data-node="${attr(m.id)}">◈ ${esc(m.label)} <span>查看方法 →</span></button>${refs.length?`<div class="lineage-refs">${refs.map(r=>`<button data-node="${attr(r.id)}">◇ ${esc(r.label)}</button>`).join('')}</div>`:'<div class="detail-body">代表工作待添加</div>'}</div>`}).join('');
+ $('detailPanel').classList.add('open');const cls=flagTag(n.status);
+ $('detailPanel').innerHTML=`<div class="detail-inner"><div class="detail-top"><span class="mini-label">RESEARCH NODE · ${esc(TYPE[n.type]?.name||'研究')}</span><button class="close-detail" id="closeDetail">×</button></div><h2>${esc(n.label)}</h2><div class="detail-sub">${esc(n.subtitle||n.venue||n.date||'Research Atlas / Editable Node')}</div><div class="detail-status"><span class="tag ${cls}">${esc(n.status||'未标注')}</span>${['work','future','benchmark','external'].includes(n.type)?`<span class="tag">${esc(n.contribution||'未分类')}</span><span class="tag purple">${esc(n.narrative||'未分类')}</span>`:''}</div>
+ <div class="detail-heading">RESEARCH QUESTION / 研究问题</div><div class="detail-body">${esc(n.question||'点击编辑，补充本节点回答的研究问题。')}</div><hr class="detail-divider"><div class="detail-heading">CONCEPT / 研究定位</div><div class="detail-body">${esc(n.description||'暂无')}</div>
+ ${n.method?`<hr class="detail-divider"><div class="detail-heading">METHOD / 技术路线</div><div class="detail-body">${esc(n.method)}</div>`:''}
+ ${n.key_difference?`<hr class="detail-divider"><div class="detail-heading">POSITIONING / 与相邻方向的区别</div><div class="detail-body">${esc(n.key_difference)}</div>`:''}
+ ${tiers.length?`<hr class="detail-divider"><div class="detail-heading">SCIENTIFIC LOGIC / 科学问题层级与依赖</div><div class="detail-related">${tiers.map(e=>{const other=node(e.from===id?e.to:e.from);return other?`<button class="relation-btn" data-node="${attr(other.id)}"><b>${esc(other.label)}</b><small>${esc(e.rel)} · ${e.kind==='hierarchy'?'层级归属':e.kind==='progression'?'研究推进':e.kind==='dependency'?'跨层依赖':'跨层关联'}</small></button>`:''}).join('')}</div>`:''}
+ ${methodChain?`<hr class="detail-divider"><div class="detail-heading">TECHNICAL LINEAGE / 相关技术与代表工作</div><div class="lineage-chain">${methodChain}</div>`:''}
+ ${n.type==='benchmark'?`<hr class="detail-divider">${renderBenchmarkProgress()}`:''}
+ ${n.url&&safeUrl(n.url)?`<hr class="detail-divider"><div class="detail-heading">SOURCE / 文献来源</div><a class="source-link" href="${attr(n.url)}" target="_blank" rel="noopener">打开论文 / 资料 ↗</a>`:''}
+ <hr class="detail-divider"><div class="detail-heading">CONNECTIONS / 与其他研究的关联（${near.length}）</div><div class="detail-related">${near.length?near.map(e=>{const other=node(e.from===id?e.to:e.from);return other?`<button class="relation-btn" data-node="${attr(other.id)}"><b>${esc(other.label)}</b><small>${esc(e.from===id?'→ ':'← ')}${esc(e.rel||'关联')}</small></button>`:''}).join(''):'<div class="detail-body">尚未建立连接</div>'}</div>
+ <div class="detail-actions"><button class="small-action" data-edit-node="${attr(id)}">✎ 编辑</button><button class="small-action" data-create-link="${attr(id)}">＋ 建立关联</button><button class="small-action danger" data-delete-node="${attr(id)}">删除节点</button></div><p class="input-hint" style="margin-top:16px">关系是研究逻辑与方法关联，不自动代表论文间真实的引用关系；请持续更新归类。</p></div>`;
+ setTimeout(()=>{if(network&&view==='graph'&&graphNodes?.get(id))network.selectNodes([id]);else if(view==='graph')window.atlasSvgControls?.focus(id)},70)
+}
+function closeDetail(){$('detailPanel').classList.remove('open');activeId=null;network?.unselectAll();window.atlasSvgControls?.focus(null)}
+function deleteNode(id){const n=node(id);if(!n)return;if(!confirm('确认删除节点「'+n.label+'」及其全部关系？'))return;state.nodes=state.nodes.filter(x=>x.id!==id);state.edges=state.edges.filter(e=>e.from!==id&&e.to!==id);state.papers.forEach(p=>{if(p.graphNodeId===id){p.graphNodeId='';p.status='pending'}});save();closeDetail();renderCounters();if(view==='graph')renderGraph();if(view==='roadmap')renderRoadmap();if(view==='narrative')renderMatrix();toast('已删除节点，相关连线也已清理')}
+function exportJSON(){const json=JSON.stringify({...state,exportedAt:new Date().toISOString()},null,2);const blob=new Blob([json],{type:'application/json'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='EEG_Research_Atlas_'+nowISO()+'.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),60000);toast('JSON 备份已生成')}
+function importJSON(file){if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const obj=JSON.parse(String(reader.result));if(!validate(obj))throw Error('不是有效的 Research Atlas 备份');if(!confirm('导入将覆盖当前浏览器中的所有 Atlas 数据。建议先导出备份。继续吗？'))return;state=upgradeExisting(obj);save();closeDetail();switchView(view);toast('数据已导入')}catch(e){toast('无法导入：'+e.message)}};reader.readAsText(file)}
+function globalSearch(){const q=$('globalSearch').value.trim().toLowerCase();if(!q){if(view==='graph')renderGraph();return}const results=state.nodes.filter(n=>([n.label,n.description,n.question,n.method,(n.tags||[]).join(' ')].join(' ').toLowerCase().includes(q)));if(!results.length)return toast('没有找到匹配的研究节点');switchView('graph');setTimeout(()=>{const id=results[0].id;if(network&&graphNodes?.get(id)){network.focus(id,{scale:1.18,animation:{duration:400}})}openDetail(id);if(results.length>1)toast('找到 '+results.length+' 项，当前显示第一项')},100)}
+function handleClick(e){const btn=e.target.closest('button,a');if(!btn)return;if(btn.dataset.view){switchView(btn.dataset.view);return}if(btn.dataset.graphMode){graphMode=btn.dataset.graphMode;document.querySelectorAll('[data-graph-mode]').forEach(b=>b.classList.toggle('selected',b.dataset.graphMode===graphMode));renderGraph();return}if(btn.dataset.type){typeEnabled[btn.dataset.type]=typeEnabled[btn.dataset.type]===false;renderCounters();renderGraph();return}if(btn.dataset.node){openDetail(btn.dataset.node);return}if(btn.dataset.ideaPromote){promoteIdea(btn.dataset.ideaPromote);return}if(btn.dataset.ideaEdit){editIdea(btn.dataset.ideaEdit);return}if(btn.dataset.ideaDelete){if(confirm('删除这条灵感？')){state.ideas=state.ideas.filter(x=>x.id!==btn.dataset.ideaDelete);save();renderIdeas()}return}if(btn.dataset.action==='add-paper'){manualPaperModal();return}if(btn.dataset.oldPaper){const p=state.papers.find(x=>x.id===btn.dataset.oldPaper);if(p)manualPaperModal(p);return}if(btn.dataset.openUrl){const u=btn.dataset.openUrl;if(safeUrl(u))window.open(u,'_blank','noopener');return}if(btn.dataset.editNode){nodeEditor(node(btn.dataset.editNode));return}if(btn.dataset.createLink){linkEditor(btn.dataset.createLink);return}if(btn.dataset.deleteNode){deleteNode(btn.dataset.deleteNode);return}if(btn.dataset.closeModal!==undefined){closeModal();return}if(btn.id==='closeDetail'){closeDetail();return}}
+function bind(){document.addEventListener('click',handleClick);$('mainNav').onclick=e=>{};$('addNodeBtn').onclick=()=>nodeEditor(null);$('addLinkBtn').onclick=()=>linkEditor(activeId);$('fitBtn').onclick=()=>network?network.fit({animation:{duration:450}}):window.atlasSvgControls?.fit();$('physicsBtn').onclick=()=>{if(graphMode==='hierarchy'){state.layouts=state.layouts||{};delete state.layouts.hierarchy;save();renderGraph();toast('已恢复科学问题的分层布局');return}if(!network){window.atlasSvgControls?.relayout();return}if(network){network.setOptions({physics:{enabled:true}});network.stabilize(160);setTimeout(()=>{if(network){network.setOptions({physics:false});savePositions(network.getPositions())}},1100)}};$('quickIdeaBtn').onclick=()=>{switchView('ideas');$('ideaTitle').focus()};$('saveIdeaBtn').onclick=captureIdea;$('addPaperBtn').onclick=()=>manualPaperModal();$('globalSearch').addEventListener('keydown',e=>{if(e.key==='Enter')globalSearch()});$('exportBtn').onclick=exportJSON;$('importBtn').onclick=()=>$('importFile').click();$('importFile').addEventListener('change',e=>{importJSON(e.target.files[0]);e.target.value=''});$('modalRoot').addEventListener('click',e=>{if(e.target===$('modalRoot'))closeModal()});document.addEventListener('change',e=>{const t=e.target;if(t.dataset.protocol){const p=state.protocol.find(x=>x.id===t.dataset.protocol);if(p){p.done=t.checked;save();(activeId==='benchmark'&&openDetail('benchmark'))}}if(t.dataset.check){const p=state.checks.find(x=>x.id===t.dataset.check);if(p){p.done=t.checked;save();(activeId==='benchmark'&&openDetail('benchmark'))}}});document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeDetail()}if(e.key==='/'&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName)){e.preventDefault();$('globalSearch').focus()}})}
+function boot(){state=load();const legacyDecoder=node('decoder');if(legacyDecoder&&legacyDecoder.description==='一个持续扩充的学术主题入口：新论文先进入雷达审阅，相关的才添加到主图。'){legacyDecoder.description='EEG Decoding 相关工作入口：手动添加论文链接，再连接到对应科学问题、方法谱系和已有论文。';save()}Object.keys(TYPE).forEach(k=>typeEnabled[k]=true);window.addEventListener('atlas:vis-ready',()=>{if(view==='graph')renderGraph()});bind();renderCounters();switchView('graph');setTimeout(()=>{if(!window.vis)toast('图谱库尚未加载：当前使用离线 SVG 可交互图谱（同样支持拖拽、缩放与点击）。')},1300)}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();
+
+</script>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="identity"><div class="identity-mark">E<span>·</span></div><div><strong>EEG Research Atlas</strong><small>科学问题 · 方法谱系 · 论文</small></div></div>
+    <div class="sidebar-section-label">WORKSPACE</div>
+    <nav id="mainNav" class="navigation">
+      <button data-view="graph" class="nav-btn active"><span class="navico">◈</span> 知识网络 <span class="navtail">G</span></button>
+      <button data-view="roadmap" class="nav-btn"><span class="navico">⌁</span> 研究路线</button>
+      <button data-view="narrative" class="nav-btn"><span class="navico">▦</span> 叙事矩阵</button>
+    </nav>
+    <div class="sidebar-section-label space-top">QUICK CAPTURE</div>
+    <nav class="navigation">
+      <button data-view="ideas" class="nav-btn"><span class="navico">✧</span> 灵感收件箱 <em id="ideaCount">0</em></button>
+      <button type="button" class="nav-btn" data-action="add-paper"><span class="navico">⊕</span> 手动添加论文</button>
+    </nav>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section-label">节点类型 · 筛选</div>
+    <div id="typeFilters" class="type-filters"></div>
+    <div class="sidebar-footer">
+      <span class="indicator"><span class="pulse-dot"></span> 本地工作区 · 自动保存</span>
+      <div class="subtext">手动添加论文链接，按需关联科学问题<br>所有修改仅保存在当前浏览器</div>
+      <div class="footer-actions"><button id="exportBtn" class="link-btn">⇩ 导出 JSON</button><button id="importBtn" class="link-btn">⇧ 导入</button></div>
+      <input id="importFile" type="file" accept=".json,application/json" hidden>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="breadcrumb">RESEARCH WORKSPACE <span>/</span> <strong id="viewBreadcrumb">知识网络</strong></div>
+      <div class="top-actions"><div class="search-wrap"><span>⌕</span><input id="globalSearch" placeholder="搜索论文、研究问题、关键词…" autocomplete="off"><kbd>/</kbd></div><button class="btn secondary" id="addPaperBtn">＋ 添加论文</button><button class="btn secondary" id="addLinkBtn">＋ 建立关系</button><button class="btn primary" id="addNodeBtn">＋ 新建节点</button></div>
+    </header>
+    <div class="workspace-heading"><div><div class="eyebrow" id="viewEyebrow">KNOWLEDGE NETWORK / 01</div><h1 id="viewTitle">一张图，看清 EEG 空间重建研究体系</h1><p id="viewSubtitle">从信号保真，到 Benchmark 重建决策，再到任务有效方法。</p></div><div id="headingStats" class="heading-stats"></div></div>
+
+    <section id="graphView" class="view graph-view active">
+      <div class="view-toolbar"><div class="tool-left"><span class="caption">探索方式</span><button class="pill selected" data-graph-mode="hierarchy">科学问题层级</button><button class="pill" data-graph-mode="all">全部网络</button><button class="pill" data-graph-mode="lineage">技术谱系</button><button class="pill" data-graph-mode="decoder">EEG Decoder</button></div><div class="tool-right"><button id="physicsBtn" class="icon-text">⌁ 恢复层级布局 / 重新布局</button><button id="fitBtn" class="icon-text">⤢ 适应画布</button></div></div>
+      <div class="graph-stage"><div id="network" aria-label="EEG 知识网络图"></div><div id="networkFallback" class="network-fallback" hidden></div><div class="graph-corner"><span class="live-sign">● INTERACTIVE MAP</span><strong>EEG Spatial Reconstruction</strong><small>A 信号保真 → B 重建决策 → C 任务有效 · 点击节点查看关联</small></div><div id="graphLegend" class="graph-legend"></div><div class="graph-bottom-note">绿色粗实线：A → B → C 科研推进 · 浅色实线：问题归属 · 虚线：跨层启发</div></div>
+    </section>
+
+    <section id="roadmapView" class="view"><div class="section-intro"><span class="section-kicker">THE RESEARCH STORY</span><h2>围绕科学问题，连接方法、论文与未来研究</h2><p>以六个子科学问题组织三阶段研究：A 信号保真 → B Benchmark 重建决策 → C 任务有效。</p></div><div id="roadmapBoard" class="roadmap-board"></div><div class="question-banner"><span>↳ 研究原则</span><strong>科研结构按科学问题组织，论文与技术谱系保留多对多关联。</strong><p>点击任何论文，可以继续追溯其相关方法及代表文献；未来设想会标记为尚待验证。</p></div></section>
+    <section id="narrativeView" class="view"><div class="section-intro"><span class="section-kicker">CONTRIBUTION × NARRATIVE</span><h2>六种贡献 × 九种叙事</h2><p>节点按「主贡献 × 主叙事」落格。点击论文查看科学问题、技术谱系和研究故事；未来工作是预期定位，可以调整。</p></div><div class="matrix-help"><span>● 已完成研究</span><span>◌ 未来构想</span><span>◇ 外部论文</span><span class="matrix-tip">空格子不是缺点，不必强行填满</span></div><div id="narrativeMatrix" class="matrix-scroller"></div></section>
+    <section id="ideasView" class="view"><div class="section-intro"><span class="section-kicker">QUICK CAPTURE / IDEA INBOX</span><h2>灵感先收下，再决定是否进入研究主线</h2><p>这里的条目不会立即污染主图。整理问题、确定关系后再转为正式节点。</p></div><div class="capture-grid"><div class="content-card capture-form"><div class="mini-label">CAPTURE AN IDEA</div><h3>记下刚想到的问题</h3><label>一句话想法<input id="ideaTitle" placeholder="例如：是否需要根据任务动态选择重建策略？"></label><label>背景 / 假设<textarea id="ideaDescription" rows="5" placeholder="为什么想到它？要验证什么？先简要记录即可。"></textarea></label><label>可能关联的已有工作<select id="ideaRelated"></select></label><button id="saveIdeaBtn" class="btn primary wide">✧ 加入灵感收件箱</button><p class="input-hint">稍后可以点击「整理入图」，将其升级为研究问题或未来工作。</p></div><div class="inbox-column"><div class="column-title"><strong>待整理的灵感</strong><span id="ideasBadge" class="tiny-badge">0</span></div><div id="ideaList" class="inbox-list"></div></div></div></section>
+  </main>
+  <aside id="detailPanel" class="detail-panel"><div class="detail-empty"><span>◈</span><h3>选中一个研究节点</h3><p>点击图谱、路线图或叙事矩阵中的论文，查看它的科学问题、方法谱系、叙事定位和相邻论文。</p></div></aside>
+</div>
+<button id="quickIdeaBtn" class="floating-capture" title="记下研究想法">✧ <span>快速记录灵感</span></button>
+<div id="modalRoot" class="modal-root" hidden></div><div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>
